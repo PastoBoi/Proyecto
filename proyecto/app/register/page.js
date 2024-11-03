@@ -3,14 +3,14 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
-export default function LoginPage() {
+export default function RegisterPage() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const router = useRouter();
 
-  const handleLogin = async (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
-    const response = await fetch('/api/login', {
+    const response = await fetch('/api/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -19,17 +19,19 @@ export default function LoginPage() {
     });
 
     if (response.ok) {
-      alert('Inicio de sesión exitoso');
-      router.push('/'); // Redirige a la página principal después de iniciar sesión
+      alert('Registro exitoso');
+      router.push('/login'); // Redirige a la página de inicio de sesión después de registrarse
+    } else if (response.status === 409) {
+      alert('El usuario ya existe');
     } else {
-      alert('Credenciales incorrectas');
+      alert('Error al registrar usuario');
     }
   };
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
-      <h2 className="text-3xl font-bold mb-6">Iniciar Sesión</h2>
-      <form onSubmit={handleLogin} className="flex flex-col w-80 gap-4">
+      <h2 className="text-3xl font-bold mb-6">Registro</h2>
+      <form onSubmit={handleRegister} className="flex flex-col w-80 gap-4">
         <label>
           Usuario:
           <input
@@ -51,7 +53,7 @@ export default function LoginPage() {
           />
         </label>
         <button type="submit" className="bg-blue-600 text-white py-2 rounded">
-          Iniciar Sesión
+          Registrar
         </button>
       </form>
     </div>
