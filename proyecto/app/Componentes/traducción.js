@@ -12,6 +12,11 @@ const translations = {
       registerSuccess: "Registration successful",
       userExists: "User already exists",
       registerError: "Error registering user",
+      cart: "Cart",
+      promotions: "Promotions",
+      newDiscs: "New Discs",
+      sustainableSound: "Sustainable Sound",
+      welcome: "Welcome to Sustainable Sound!",
     },
     es: {
       title: "Registro",
@@ -24,6 +29,11 @@ const translations = {
       registerSuccess: "Registro exitoso",
       userExists: "El usuario ya existe",
       registerError: "Error al registrar usuario",
+      cart: "Carrito",
+      promotions: "Promociones",
+      newDiscs: "Discos Nuevos",
+      sustainableSound: "Sustainable Sound",
+      welcome: "¡Bienvenido a Sustainable Sound!",
     },
     // Puedes agregar más idiomas aquí
   };
