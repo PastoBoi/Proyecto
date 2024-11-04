@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import translations from './Componentes/traducción';
+import translations from '../Componentes/traducción';
 
 export default function RegisterPage() {
   const [username, setUsername] = useState('');
@@ -32,6 +32,13 @@ export default function RegisterPage() {
     }
   }, [router]);
 
+
+  // Manejar el cambio de idioma
+  const handleLanguageChange = (e) => {
+    const selectedLanguage = e.target.value;
+    setLanguage(selectedLanguage);
+    localStorage.setItem('preferredLanguage', selectedLanguage);
+  }; 
 
   const handleRegister = async (e) => {
     e.preventDefault();
