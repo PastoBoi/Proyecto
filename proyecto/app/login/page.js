@@ -27,7 +27,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-[url('https://www.concierto.cl/wp-content/uploads/2018/09/Obsolete_CDs.jpg')]">
       <h2 className="text-3xl font-bold mb-6">Iniciar Sesión</h2>
       <form onSubmit={handleLogin} className="flex flex-col w-80 gap-4">
         <label>

@@ -24,21 +24,27 @@ export default function Header() {
   };
 
   return (
-    <header className="bg-blue-300 p-4 text-blue-900 flex justify-between items-center">
-      <button className="text-2xl font-bold" onClick={handleHomeRedirect}>
+    <header className="bg-blue-300 p-4 text-blue-900 flex flex-col md:flex-row justify-between items-center">
+      <button className="text-2xl font-bold mb-2 md:mb-0" onClick={handleHomeRedirect}>
         {t('sustainableSound')}
       </button>
-      <div className="flex gap-4">
-        <button onClick={handleCartRedirect}>
+      <div className="flex flex-col md:flex-row gap-2 md:gap-4">
+        <button
+          className="flex items-center justify-center bg-blue-500 text-white px-4 py-2 rounded-md transition duration-200 hover:bg-blue-600"
+          onClick={handleCartRedirect}
+        >
           🛒 {t('cart')}
         </button>
-        <button>
+        <button className="flex items-center justify-center bg-blue-500 text-white px-4 py-2 rounded-md transition duration-200 hover:bg-blue-600">
           📢 {t('promotions')}
         </button>
-        <button>
+        <button className="flex items-center justify-center bg-blue-500 text-white px-4 py-2 rounded-md transition duration-200 hover:bg-blue-600">
           🎵 {t('newDiscs')}
         </button>
-        <button onClick={toggleLanguage}>
+        <button
+          className="flex items-center justify-center bg-blue-500 text-white px-4 py-2 rounded-md transition duration-200 hover:bg-blue-600"
+          onClick={toggleLanguage}
+        >
           {language === 'es' ? 'Idioma: Español' : 'Language: English'}
         </button>
       </div>

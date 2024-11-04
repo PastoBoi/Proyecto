@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useContext  } from 'react';
+import {LanguageContext} from '../Componentes/languageContext'
 import { useRouter } from 'next/navigation';
 import translations from '../Componentes/traducción';
 
@@ -48,9 +49,9 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
-      <h2 className="text-3xl font-bold mb-6">{t('header')}</h2>
-      <form onSubmit={handleRegister} className="flex flex-col w-full max-w-md gap-4 bg-white p-6 rounded shadow">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4 bg-[url('https://www.concierto.cl/wp-content/uploads/2018/09/Obsolete_CDs.jpg')]">
+      <h2 className="text-3xl text-blue-900 box-border bg-blue-300 rounded-xl p-3 font-extrabold mb-6">{t('header')}</h2>
+      <form onSubmit={handleRegister} className="flex flex-col w-full max-w-md gap-4 text-black font-bold box-border bg-blue-300 rounded-xl p-6 rounded shadow">
         <label className="flex flex-col">
           {t('username')}
           <input
@@ -58,8 +59,7 @@ export default function RegisterPage() {
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
-            className="p-2 border rounded mt-1 text-black"
-            placeholder={t('username')}
+            className="p-2 border rounded mt-1 text-black bg-white"
           />
         </label>
         <label className="flex flex-col">
@@ -69,8 +69,7 @@ export default function RegisterPage() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
-            className="p-2 border rounded mt-1 text-black"
-            placeholder={t('password')}
+            className="p-2 border rounded mt-1 text-black bg-white"
           />
         </label>
         <button type="submit" className="bg-blue-600 text-white py-2 rounded hover:bg-blue-700">
