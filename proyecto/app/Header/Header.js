@@ -37,10 +37,12 @@ export default function Header() {
   };
 
   return (
-    <header className="bg-blue-600 p-4 text-white flex justify-between items-center">
-      <button className="text-2xl font-semibold" onClick={handleHomeRedirect}>Sustainable Sound</button>
+    <header className="bg-blue-300 p-4 text-blue-900 flex justify-between items-center">
+      <button className="text-2xl font-bold" onClick={handleHomeRedirect}>Sustainable Sound</button>
       <div className="flex gap-4">
-        <button onClick={handleCartRedirect}>🛒 Carrito de Compras</button>
+        <button>
+          <a href="Carrito.html">🛒 Carrito de Compras</a>
+        </button>
         <button>📢 Promociones</button>
         <button>🎵 Discos Nuevos</button>
         <button onClick={toggleLanguage}>
