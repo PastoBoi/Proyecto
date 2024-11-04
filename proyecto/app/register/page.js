@@ -49,33 +49,42 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4 bg-[url('https://www.concierto.cl/wp-content/uploads/2018/09/Obsolete_CDs.jpg')]">
-      <h2 className="text-3xl text-blue-900 box-border bg-blue-300 rounded-xl p-3 font-extrabold mb-6">{t('header')}</h2>
-      <form onSubmit={handleRegister} className="flex flex-col w-full max-w-md gap-4 text-black font-bold box-border bg-blue-300 rounded-xl p-6 rounded shadow">
-        <label className="flex flex-col">
-          {t('username')}
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-            className="p-2 border rounded mt-1 text-black bg-white"
-          />
-        </label>
-        <label className="flex flex-col">
-          {t('password')}
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            className="p-2 border rounded mt-1 text-black bg-white"
-          />
-        </label>
-        <button type="submit" className="bg-blue-600 text-white py-2 rounded hover:bg-blue-700">
-          {t('registerButton')}
-        </button>
-      </form>
+    <div
+      className="flex flex-col items-center justify-center min-h-screen bg-cover bg-center"
+      style={{
+        backgroundImage: "url('https://www.concierto.cl/wp-content/uploads/2018/09/Obsolete_CDs.jpg')",
+      }}
+    >
+      <div className="box-border bg-blue-300 bg-opacity-80 p-6 rounded-xl">
+        <h2 className="text-3xl font-bold mb-6 text-blue-900">{t('header')}</h2>
+        <form onSubmit={handleRegister} className="flex flex-col w-80 gap-4">
+          <label className="flex flex-col">
+            {t('username')}
+            <input
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+              className="p-2 border rounded mt-1 text-black bg-white"
+              placeholder={t('username')}
+            />
+          </label>
+          <label className="flex flex-col">
+            {t('password')}
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              className="p-2 border rounded mt-1 text-black bg-white"
+              placeholder={t('password')}
+            />
+          </label>
+          <button type="submit" className="bg-blue-600 text-white py-2 rounded hover:bg-blue-700">
+            {t('registerButton')}
+          </button>
+        </form>
+      </div>
     </div>
   );
 }
