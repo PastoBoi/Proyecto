@@ -18,7 +18,11 @@ const translations = {
       sustainableSound: "Sustainable Sound",
       welcome: "Welcome to Sustainable Sound!",
       login: "Login",
-      createUser: "Create User",      
+      createUser: "Create User",   
+      loginPageTitle: "Login",
+      loginButton: "Login",
+      loginSuccess: "Login successful",
+      loginError: "Incorrect credentials",   
     },
     es: {
       title: "Registro",
@@ -38,6 +42,10 @@ const translations = {
       welcome: "¡Bienvenido a Sustainable Sound!",
       login: "Iniciar Sesión",
       createUser: "Crear Usuario",
+      loginPageTitle: "Iniciar Sesión",
+      loginButton: "Iniciar Sesión",
+      loginSuccess: "Inicio de sesión exitoso",
+      loginError: "Credenciales incorrectas",
     },
     // Puedes agregar más idiomas aquí
   };
