@@ -4,8 +4,8 @@
 
 import { useRouter } from 'next/navigation';
 import { useContext } from 'react';
-import { LanguageContext } from '../Componentes/LanguageContext';
-import translations from '../Componentes/traducción';
+import { LanguageContext } from './Componentes/languageContext';
+import translations from './Componentes/traducción';
 
 export default function HomePage() {
   const router = useRouter();
