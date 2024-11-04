@@ -44,8 +44,8 @@ export default function LoginPage() {
       }}
     >
       <div className="box-border bg-blue-300 bg-opacity-80 p-6 rounded-xl">
-        <h2 className="text-3xl font-bold mb-6 text-blue-900">{t('loginPageTitle')}</h2>
-        <form onSubmit={handleLogin} className="flex flex-col w-80 gap-4">
+        <h2 className="text-3xl font-bold mb-6 text-blue-900">{t('header')}</h2>
+        <form onSubmit={handleRegister} className="flex flex-col w-80 gap-4">
           <label className="flex flex-col">
             {t('username')}
             <input
@@ -53,7 +53,7 @@ export default function LoginPage() {
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               required
-              className="p-2 border rounded mt-1 text-black"
+              className="p-2 border rounded mt-1 text-black bg-white"
               placeholder={t('username')}
             />
           </label>
@@ -64,12 +64,12 @@ export default function LoginPage() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              className="p-2 border rounded mt-1 text-black"
+              className="p-2 border rounded mt-1 text-black bg-white"
               placeholder={t('password')}
             />
           </label>
           <button type="submit" className="bg-blue-600 text-white py-2 rounded hover:bg-blue-700">
-            {t('loginButton')}
+            {t('registerButton')}
           </button>
         </form>
       </div>
