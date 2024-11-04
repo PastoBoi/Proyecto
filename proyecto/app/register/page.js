@@ -63,7 +63,7 @@ export default function RegisterPage() {
     return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
       <h2 className="text-3xl font-bold mb-6">{t('header')}</h2>
-      <form onSubmit={handleRegister} className="flex flex-col w-full max-w-md gap-4 bg-white p-6 rounded shadow">
+      <form onSubmit={handleRegister} className="flex flex-col w-full max-w-md gap-4 bg-white text-black p-6 rounded shadow">
         <label className="flex flex-col">
           {t('username')}
           <input
@@ -86,13 +86,13 @@ export default function RegisterPage() {
             placeholder={t('password')}
           />
         </label>
-        <div className="flex items-center">
+        <div className="flex items-center text-black">
           <label htmlFor="languageSelect" className="mr-2">{t('languageLabel')}</label>
           <select
             id="languageSelect"
             value={language}
             onChange={handleLanguageChange}
-            className="form-select p-2 border rounded"
+            className="form-select p-2 border rounded text-black bg-gray-200"
           >
             <option value="es">Español</option>
             <option value="en">English</option>
