@@ -1,5 +1,3 @@
-// hoc/withAuth.js
-
 import { useContext, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { AuthContext } from '../Context/AuthContext';
@@ -10,16 +8,16 @@ const withAuth = (WrappedComponent) => {
     const router = useRouter();
 
     useEffect(() => {
-      if (!user) {
-        router.push('/login');
+      if (user === false) { // Verifica explícitamente si el usuario no está autenticado
+        router.push('/'); // Redirige a la página de inicio
       }
     }, [user, router]);
 
-    if (!user) {
-      return null; // O un indicador de carga
+    if (user === null) { // Mientras se verifica la autenticación
+      return <div>Cargando...</div>; // Opcional: Mostrar un indicador de carga
     }
 
-    return <WrappedComponent {...props} />;
+    return user ? <WrappedComponent {...props} /> : null;
   };
 };
 

@@ -1,36 +1,46 @@
-import React, { createContext, useState, useEffect } from 'react';
-import jwt from 'jsonwebtoken';
+// context/AuthContext.js
 
-const SECRET_KEY = 'TU_CLAVE_SECRETA'; // Debes guardar esto en variables de entorno
+import React, { createContext, useState, useEffect } from 'react';
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(null); // null: verificando, false: no autenticado, objeto: autenticado
 
   useEffect(() => {
-    // Verificar si hay un token en Local Storage
-    const token = localStorage.getItem('token');
-    if (token) {
+    const fetchUser = async () => {
       try {
-        const decoded = jwt.verify(token, SECRET_KEY);
-        setUser({ username: decoded.username });
+        const res = await fetch('/api/auth/me', {
+          method: 'GET',
+          credentials: 'include', // Incluir cookies en la solicitud
+        });
+
+        if (res.ok) {
+          const data = await res.json();
+          setUser({ username: data.username });
+        } else {
+          setUser(false);
+        }
       } catch (error) {
-        console.error('Invalid token');
-        localStorage.removeItem('token');
+        console.error('Error fetching user:', error);
+        setUser(false);
       }
-    }
+    };
+
+    fetchUser();
   }, []);
 
-  const login = (token) => {
-    localStorage.setItem('token', token);
-    const decoded = jwt.decode(token);
-    setUser({ username: decoded.username });
+  const login = () => {
+    // El estado de usuario se actualizará al verificar la cookie
+    // Puedes agregar lógica adicional si es necesario
   };
 
-  const logout = () => {
-    localStorage.removeItem('token');
-    setUser(null);
+  const logout = async () => {
+    await fetch('/api/logout', {
+      method: 'POST',
+      credentials: 'include',
+    });
+    setUser(false);
   };
 
   return (
