@@ -55,9 +55,9 @@ export default function RegisterPage() {
         backgroundImage: "url('https://www.concierto.cl/wp-content/uploads/2018/09/Obsolete_CDs.jpg')",
       }}
     >
-      <div className="box-border bg-blue-300 bg-opacity-80 p-6 rounded-xl">
-        <h2 className="text-3xl font-bold mb-6 text-blue-900">{t('header')}</h2>
-        <form onSubmit={handleRegister} className="flex flex-col w-80 gap-4">
+      <div className="box-border bg-black bg-opacity-90 p-6 rounded-xl">
+        <h2 className="text-3xl font-bold mb-6 text-purple-900">{t('header')}</h2>
+        <form onSubmit={handleRegister} className="flex flex-col w-80 gap-4 text-purple-900 font-bold">
           <label className="flex flex-col">
             {t('username')}
             <input
@@ -66,7 +66,6 @@ export default function RegisterPage() {
               onChange={(e) => setUsername(e.target.value)}
               required
               className="p-2 border rounded mt-1 text-black bg-white"
-              placeholder={t('username')}
             />
           </label>
           <label className="flex flex-col">
@@ -77,7 +76,6 @@ export default function RegisterPage() {
               onChange={(e) => setPassword(e.target.value)}
               required
               className="p-2 border rounded mt-1 text-black bg-white"
-              placeholder={t('password')}
             />
           </label>
           <button type="submit" className="bg-blue-600 text-white py-2 rounded hover:bg-blue-700">

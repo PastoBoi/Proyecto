@@ -31,8 +31,8 @@ export default function HomePage() {
         backgroundImage: "url('https://www.concierto.cl/wp-content/uploads/2018/09/Obsolete_CDs.jpg')",
       }}
     >
-      <div className="box-border bg-blue-300 items-center flex flex-col p-4 rounded-xl">
-        <h2 className="text-3xl font-semibold mt-4 text-blue-900">
+      <div className="box-border bg-black bg-opacity-90 items-center flex flex-col p-4 rounded-xl">
+        <h2 className="text-3xl font-semibold mt-4 text-purple-900">
           {t('welcome')}
         </h2>
         <div className="mt-4 text-2xl">

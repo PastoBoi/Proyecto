@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+bg-marron {
+  --black-color: hsl(220, 24%, 12%);
+  --black-color-light: hsl(220, 24%, 15%);
+  --black-color-lighten: hsl(220, 20%, 18%);
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
