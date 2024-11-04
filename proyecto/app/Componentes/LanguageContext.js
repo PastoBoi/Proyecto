@@ -10,7 +10,7 @@ export const LanguageProvider = ({ children }) => {
   const [language, setLanguage] = useState('es'); // Idioma por defecto: Español
 
   // Cargar el idioma desde Local Storage al montar el componente
-  useEffect(() => {
+  useEffect(() => { 
     const storedLanguage = localStorage.getItem('preferredLanguage');
     if (storedLanguage) {
       setLanguage(storedLanguage);

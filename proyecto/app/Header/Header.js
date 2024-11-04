@@ -2,49 +2,42 @@
 
 "use client";
 
-import {useRouter} from 'next/navigation';
-import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { useContext } from 'react';
+import { LanguageContext } from '../Componentes/languageContext';
+import translations from '../Componentes/traducción';
 
 export default function Header() {
   const router = useRouter();
-  const [language, setLanguage] = useState("es"); // Define un valor predeterminado para el idioma
-  const [isMounted, setIsMounted] = useState(false);
+  const { language, toggleLanguage } = useContext(LanguageContext);
 
   const handleHomeRedirect = () => {
     router.push('/');
   };
 
   const handleCartRedirect = () => {
-    router.push('/carrito')
-  }
+    router.push('/carrito');
+  };
 
-  useEffect(() => {
-    setIsMounted(true);
-    const savedLanguage = localStorage.getItem('language');
-    if (savedLanguage) {
-      setLanguage(savedLanguage);
-    }
-  }, []);
-
-  useEffect(() => {
-    if (isMounted) {
-      localStorage.setItem('language', language);
-    }
-  }, [language, isMounted]);
-
-  const toggleLanguage = () => {
-    setLanguage((prevLang) => (prevLang === 'es' ? 'en' : 'es'));
+  const t = (key) => {
+    return translations[language][key] || key;
   };
 
   return (
     <header className="bg-blue-300 p-4 text-blue-900 flex justify-between items-center">
-      <button className="text-2xl font-bold" onClick={handleHomeRedirect}>Sustainable Sound</button>
+      <button className="text-2xl font-bold" onClick={handleHomeRedirect}>
+        {t('sustainableSound')}
+      </button>
       <div className="flex gap-4">
-        <button>
-          <a href="Carrito.html">🛒 Carrito de Compras</a>
+        <button onClick={handleCartRedirect}>
+          🛒 {t('cart')}
         </button>
-        <button>📢 Promociones</button>
-        <button>🎵 Discos Nuevos</button>
+        <button>
+          📢 {t('promotions')}
+        </button>
+        <button>
+          🎵 {t('newDiscs')}
+        </button>
         <button onClick={toggleLanguage}>
           {language === 'es' ? 'Idioma: Español' : 'Language: English'}
         </button>
