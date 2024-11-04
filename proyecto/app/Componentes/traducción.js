@@ -17,6 +17,8 @@ const translations = {
       newDiscs: "New Discs",
       sustainableSound: "Sustainable Sound",
       welcome: "Welcome to Sustainable Sound!",
+      login: "Login",
+      createUser: "Create User",      
     },
     es: {
       title: "Registro",
@@ -34,6 +36,8 @@ const translations = {
       newDiscs: "Discos Nuevos",
       sustainableSound: "Sustainable Sound",
       welcome: "¡Bienvenido a Sustainable Sound!",
+      login: "Iniciar Sesión",
+      createUser: "Crear Usuario",
     },
     // Puedes agregar más idiomas aquí
   };
