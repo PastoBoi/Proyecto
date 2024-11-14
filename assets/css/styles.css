@@ -7,9 +7,9 @@
 
   /*========== Colors ==========*/
   /*Color mode HSL(hue, saturation, lightness)*/
-  --black-color: hsl(220, 24%, 12%);
-  --black-color-light: hsl(220, 24%, 15%);
-  --black-color-lighten: hsl(220, 20%, 18%);
+  --black-color: #181c1c;
+  --black-color-light: #252b2b;
+  --black-color-lighten: #2d3434;
   --white-color: #fff;
   --body-color: hsl(220, 100%, 97%);
 
@@ -76,7 +76,7 @@ a {
   top: 0;
   left: 0;
   width: 100%;
-  background-color: var(--black-color);
+  background-color: #181c1c;
   box-shadow: 0 2px 16px hsla(220, 32%, 8%, .3);
   z-index: var(--z-fixed);
 }
@@ -369,6 +369,35 @@ main {
   margin-top: -20px;
 }
 
+.product-price{
+  color: #8e9f91;
+}
+
+.product-item {
+  transition: background-color 0.3s, opacity 0.3s;
+}
+
+.product-item:hover {
+  background-color: rgba(0, 0, 0, 0.1); /* Adjust the color and opacity as needed */
+  opacity: 0.8; /* Optional: lower opacity for a darker effect */
+}
+
+.product-name{
+  color: aliceblue;
+}
+
+.add-button{
+  margin-top: 20px;
+  margin-right: 5px;
+  color: aliceblue;
+  font-size: 25px;
+}
+
+.add-button:hover{
+  margin-right: 5px;
+  color: #8e9f91;
+}
+
 @media screen and (max-width: 768px) {
   main {
     margin-top: 60px;
@@ -384,9 +413,9 @@ main {
     margin-top: 100px; /* Ajuste para tabletas */
   }
   img {
-    width: 12vw; /* Establecer un ancho deseado para tabletas */
+    width: 14vw; /* Establecer un ancho deseado para tabletas */
     height: auto; /* Mantener la proporción de aspecto */
-    justify-content: space-around;
+    margin-top: 20px;
   }
   .bg-imagen {
     background-image: url('https://cdn.usegalileo.ai/sdxl10/f3329a6c-b9dd-490e-a32e-3f790c0bc3ad.png');
@@ -409,10 +438,10 @@ h2{
 
 .outlined-text {
       color: white; /* Color del texto */
-      text-shadow: 1px 1px 0px black, 
-                   -1px -1px 0px black,
-                   1px -1px 0px black,
-                   -1px 1px 0px black;
+      text-shadow: 1px 1px 0px #a3a0a0, 
+                   -1px -1px 0px #a3a0a0,
+                   1px -1px 0px #a3a0a0,
+                   -1px 1px 0px #a3a0a0;
    }
 
 .form-control::placeholder {
@@ -425,7 +454,7 @@ h2{
 }
 
 .form-control:focus {
-  box-shadow: 0px 0px   5px 2px #00ffff;
+  box-shadow: 0px 0px   5px 2px #36453a;
   color: #fff;
 }
 
@@ -435,11 +464,10 @@ input{
  border-radius: 10px;
 }
   
-.follow-button:hover{  
-  background-color: green;
-  color: white;  
-  padding: 5px 10px;  
-  cursor: pointer;  
-  border-radius: 5px;
-  margin-top: 15px;  
+.input-group{
+  border: #fff;
+  background-color: #202c24; 
+  border-radius: 10px; 
+  gap: 10px;
+  border: 2px solid #36453a; /* Cambia el grosor, color y estilo según prefieras */
 }
