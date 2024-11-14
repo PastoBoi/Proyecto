@@ -2,16 +2,19 @@
 
 import './globals.css';
 import { LanguageProvider } from './Componentes/languageContext';
+import { CartProvider } from './carrito/page'; // Importar CartProvider
 import Header from './Header/Header';
 
 export default function RootLayout({ children }) {
   return (
     <html lang="es">
       <body>
-        <LanguageProvider>
-          <Header />
-          <main>{children}</main>
-        </LanguageProvider>
+        <CartProvider> {/* Envolver con CartProvider */}
+          <LanguageProvider>
+            <Header />
+            <main>{children}</main>
+          </LanguageProvider>
+        </CartProvider>
       </body>
     </html>
   );
