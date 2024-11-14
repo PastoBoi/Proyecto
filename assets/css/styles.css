@@ -46,6 +46,8 @@ body {
   font-size: var(--normal-font-size);
   background-color: var(--body-color);
   overflow-x: hidden; /* Ocultar el scroll horizontal */  
+  background-color:   #181c1c;
+  color: #fff;
 }
 
 ul {
@@ -377,33 +379,21 @@ main {
   }
 }
 
-@media screen and (max-width: 768px) {
-  main {
-    margin-top: 60px;
-  }
-  img {
-    width: 180px; /* Establecer el ancho deseado */
-    height: auto; /* Mantener la proporción de aspecto */
-  }
-}
-@media screen and (min-width: 768px) and (max-width: 1024px) {
-  main {
-    margin-top: 60px; /* Ajuste para tabletas */
-  }
-
-  img {
-    width: 220px; /* Establecer un ancho deseado para tabletas */
-    height: auto; /* Mantener la proporción de aspecto */
-  }
-}
-
 @media screen and (min-width: 768px) and (min-width: 1024px) {
+  main {
+    margin-top: 100px; /* Ajuste para tabletas */
+  }
+  img {
+    width: 12vw; /* Establecer un ancho deseado para tabletas */
+    height: auto; /* Mantener la proporción de aspecto */
+    justify-content: space-around;
+  }
   .bg-imagen {
     background-image: url('https://cdn.usegalileo.ai/sdxl10/f3329a6c-b9dd-490e-a32e-3f790c0bc3ad.png');
     background-size: auto;
     background-position: center;
     color: white; /* Cambia el color del texto si es necesario para mejorar la legibilidad */
-    padding: 20px; /* Espacio alrededor del texto */
+    padding: 0; /* Espacio alrededor del texto */
     border-radius: 15px;
     height: 400px;
   }
@@ -431,13 +421,25 @@ h2{
 }
 
 .form-control {
-    background-color: #202c24; 
-    border: none; 
-    color: white; /* Text color for input */
-    transition: box-shadow 0.3s ease;
+  background-color: #202c24;
 }
 
 .form-control:focus {
-  outline: none; /* Quita el borde predeterminado */
-  box-shadow: 0 0 10px rgba(0, 255, 0, 0.8); /* Cambia el color y la intensidad aquí */
+  box-shadow: 0px 0px   5px 2px #00ffff;
+  color: #fff;
+}
+
+input{
+ background-color: #202c24; 
+ border: none; 
+ border-radius: 10px;
+}
+  
+.follow-button:hover{  
+  background-color: green;
+  color: white;  
+  padding: 5px 10px;  
+  cursor: pointer;  
+  border-radius: 5px;
+  margin-top: 15px;  
 }
