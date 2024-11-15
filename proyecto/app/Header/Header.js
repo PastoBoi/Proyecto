@@ -10,7 +10,7 @@ export default function Header() {
   const { language, toggleLanguage } = useContext(LanguageContext);
 
   const handleHomeRedirect = () => {
-    router.push('/');
+    router.push('/Interfaz_inicio');
   };
 
   const handleCartRedirect = () => {

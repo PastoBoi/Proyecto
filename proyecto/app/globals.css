@@ -1,7 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+
 
 bg-marron {
   --black-color: hsl(220, 24%, 12%);
@@ -42,7 +43,7 @@ bg-marron {
 }
 
 body {
-  font-family: var(--body-font);
+  font-family: 'Montserrat', sans-serif;
   color: var(--foreground);
   background: var(--background);
 }
@@ -123,7 +124,7 @@ header{
 }
 
 body {
-  font-family: var(--body-font);
+  font-family: 'Montserrat', Arial, sans-serif;
   font-size: var(--normal-font-size);
   background-color: var(--body-color);
   overflow-x: hidden; /* Ocultar el scroll horizontal */  
@@ -453,8 +454,16 @@ a {
   max-width: 14vw;
 }
 
+.Name-price{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .product-item {
   transition: background-color 0.3s, opacity 0.3s;
+  display: flex;
+  flex-direction: column;
 }
 
 .product-item:hover {
@@ -518,22 +527,35 @@ h2{
 }
 
 .outlined-text {
-      color: rgb(255, 255, 255); /* Color del texto */
-      font-weight: 500;
-   }
+  padding-top: 100px;
+  color: rgb(255, 255, 255); /* Color del texto */
+  font-weight: 400;
+  font-size: 56px;
+}
+
+  .outlined-subtext {
+  color: rgb(255, 255, 255); /* Color del texto */
+  font-weight: 400;
+  font-size: 20px;
+}
 
 .form-control::placeholder {
   color: #a9a9a9; /* Change this to your desired placeholder color */
   opacity: 1; /* Optional: Change opacity if needed */
+  text-indent: 10px;
 }
 
 .form-control {
   background-color: #202c24;
+  box-shadow: none;
+  text-indent: 10px;
+  width: 30vw;
 }
 
 .form-control:focus {
-  box-shadow: 0px 0px   5px 2px #36453a;
   color: #fff;
+  outline: none; 
+  box-shadow: 0 0 5px 2px #36453a; /* Cambia el color del box-shadow */
 }
 
 input{
@@ -543,9 +565,37 @@ input{
 }
   
 .input-group{
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  max-width: 38vw;
   border: #fff;
   background-color: #202c24; 
   border-radius: 10px; 
   gap: 10px;
   border: 2px solid #36453a; /* Cambia el grosor, color y estilo según prefieras */
+}
+
+.boton-busc{
+  background-color: #18ecd4;
+  color: black;
+  font-weight: bolder;
+  border-radius: 10px;
+  width: 100px;
+  height: 45px;
+}
+
+.boton-busc:hover{
+  opacity: 0.9;
+}
+
+.Promos {
+  margin-top: 20px;
+  font-size: 30px;
+}
+
+.Albumes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }

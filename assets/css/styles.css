@@ -443,7 +443,14 @@ h2{
 .outlined-text {
       color: rgb(255, 255, 255); /* Color del texto */
       font-weight: 500;
+      font-size: 56px;
    }
+
+.outlined-subtext {
+      color: rgb(255, 255, 255); /* Color del texto */
+      font-weight: 500;
+      font-size: 20px;
+  }
 
 .form-control::placeholder {
   color: #a9a9a9; /* Change this to your desired placeholder color */
@@ -466,6 +473,7 @@ input{
 }
   
 .input-group{
+  width: 1000px;
   border: #fff;
   background-color: #202c24; 
   border-radius: 10px; 

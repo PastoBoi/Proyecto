@@ -23,7 +23,12 @@ const translations = {
       loginPageTitle: "Login",
       loginButton: "Login",
       loginSuccess: "Login successful",
-      loginError: "Incorrect credentials",   
+      loginError: "Incorrect credentials",
+      Slogan: "Immerse Yourself in the Sound of the Earth",
+      SloganFoot: "Discover sustainable music with records made from recycled materials",
+      SearchPlaceholder: "Search disks",
+      SearchButton: "Search",
+      PromotedDisks: "Promoted Disks"
     },
     es: {
       title: "Registro",
@@ -48,6 +53,11 @@ const translations = {
       loginButton: "Iniciar Sesión",
       loginSuccess: "Inicio de sesión exitoso",
       loginError: "Credenciales incorrectas",
+      Slogan: "Sumérgete en el Sonido de la Tierra",
+      SloganFoot: "Descubre música sostenible con discos hechos de materiales reciclados",
+      SearchPlaceholder: "Buscar discos",
+      SearchButton: "Buscar",
+      PromotedDisks: "Discos Promocionados"
     },
     // Puedes agregar más idiomas aquí
   };

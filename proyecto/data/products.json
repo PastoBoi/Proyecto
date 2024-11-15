@@ -1,0 +1,38 @@
+[
+    {
+        "name": "Hisohiso Banashi  -  Zutomayo",
+        "price": "$10.00",
+        "link": "https://example.com/product1",
+        "image": "https://cdns-images.dzcdn.net/images/cover/29ecd861ce6f102c6545e13a1248edb7/0x1900-000000-80-0-0.jpg"
+    },
+    {
+        "name": "Otogi  -  Eve",
+        "price": "$10.00",
+        "link": "https://example.com/product1",
+        "image": "https://cdns-images.dzcdn.net/images/cover/e62edb9b94f7bcf0d7770c73d97562f6/0x1900-000000-80-0-0.jpg"
+    },
+    {
+        "name": "Kyouugen  -  Ado",
+        "price": "$10.00",
+        "link": "https://example.com/product1",
+        "image": "https://e-cdns-images.dzcdn.net/images/cover/d00ed424dd8927d561034e6d89cb05b5/500x500-000000-80-0-0.jpg"
+    },
+    {
+        "name": "Miracle Milk  -  Mili",
+        "price": "$10.00",
+        "link": "https://example.com/product1",
+        "image": "https://e-cdns-images.dzcdn.net/images/cover/1285d6765ae590bd717b886bb8b8dbd8/500x500-000000-80-0-0.jpg"
+    },
+    {
+        "name": "Pure  -  Co Shiu Ne",
+        "price": "$10.00",
+        "link": "https://example.com/product1",
+        "image": "https://e-cdns-images.dzcdn.net/images/cover/43f9366c184d81b0fa1eaf86e39587b8/500x500-000000-80-0-0.jpg"
+    },
+    {
+        "name": "Rokotsu  -  Syudou",
+        "price": "$10.00",
+        "link": "https://example.com/product1",
+        "image": "https://e-cdns-images.dzcdn.net/images/cover/a114e2133cc6dcbd1d19857b61e4a099/500x500-000000-80-0-0.jpg"
+    }
+]
