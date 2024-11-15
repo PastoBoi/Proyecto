@@ -28,7 +28,8 @@ const translations = {
       SloganFoot: "Discover sustainable music with records made from recycled materials",
       SearchPlaceholder: "Search disks",
       SearchButton: "Search",
-      PromotedDisks: "Promoted Disks"
+      PromotedDisks: "Promoted Disks",
+      Results: "Search Results"
     },
     es: {
       title: "Registro",
@@ -57,7 +58,8 @@ const translations = {
       SloganFoot: "Descubre música sostenible con discos hechos de materiales reciclados",
       SearchPlaceholder: "Buscar discos",
       SearchButton: "Buscar",
-      PromotedDisks: "Discos Promocionados"
+      PromotedDisks: "Discos Promocionados",
+      Results: "Resultados de Busqueda"
     },
     // Puedes agregar más idiomas aquí
   };
