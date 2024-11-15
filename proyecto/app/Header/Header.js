@@ -46,7 +46,7 @@ export default function Header() {
                     
                     <li className="dropdown__item">
                         <div className="nav__link">
-                            Generos <i className="ri-arrow-down-s-line dropdown__arrow"></i>
+                            {t('genres')} <i className="ri-arrow-down-s-line dropdown__arrow"></i>
                         </div>
 
                         <ul className="dropdown__menu">
