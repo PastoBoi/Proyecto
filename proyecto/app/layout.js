@@ -3,7 +3,7 @@
 import './globals.css';
 import { LanguageProvider } from './Componentes/languageContext';
 import { CartProvider } from './carrito/page'; // Importar CartProvider
-import Header from './Header/Header';
+import Header from './Header/1';
 
 export default function RootLayout({ children }) {
   return (
