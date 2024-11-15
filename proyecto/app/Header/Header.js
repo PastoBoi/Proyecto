@@ -22,33 +22,117 @@ export default function Header() {
   };
 
   return (
-    <header className="bg-marron p-4 text-purple-900 flex flex-col md:flex-row justify-between items-center">
-      <button className="text-2xl font-bold mb-2 md:mb-0" onClick={handleHomeRedirect}>
-        {t('sustainableSound')}
-      </button>
-      <div>
-        <i className="ri-file-music-line"></i>
-      </div>
-      <div className="grid grid-cols-2 gap-2 md:flex md:flex-row md:gap-4">
-        <button
-          className="flex items-center justify-center bg-purple-500 text-white px-4 py-2 rounded-md transition duration-200 hover:bg-blue-600"
-          onClick={handleCartRedirect}
-        >
-          🛒 {t('cart')}
-        </button>
-        <button className="flex items-center justify-center bg-purple-500 text-white px-4 py-2 rounded-md transition duration-200 hover:bg-blue-600">
-          📢 {t('promotions')}
-        </button>
-        <button className="flex items-center justify-center bg-purple-500 text-white px-4 py-2 rounded-md transition duration-200 hover:bg-blue-600">
-          🎵 {t('newDiscs')}
-        </button>
-        <button
-          className="flex items-center justify-center bg-purple-500 text-white px-4 py-2 rounded-md transition duration-200 hover:bg-blue-600"
-          onClick={toggleLanguage}
-        >
-          {language === 'es' ? 'Idioma: Español' : 'Language: English'}
-        </button>
-      </div>
-    </header>
+    <header className="header">
+        <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet"></link>
+            <nav className="nav container">
+                <div className="nav__data">
+                <a href="#" className="nav__logo" onClick={handleHomeRedirect}>
+                    <i className="ri-disc-line"></i> {t('sustainableSound')}
+                </a>
+                
+                <div className="nav__toggle" id="nav-toggle">
+                    <i className="ri-menu-line nav__burger"></i>
+                    <i className="ri-close-line nav__close"></i>
+                </div>
+                </div>
+
+                
+                <div className="nav__menu" id="nav-menu">
+                <ul className="nav__list">
+                    <li><a href="#" className="nav__link">{t('newDiscs')}</a></li>
+
+                    <li><a href="#" className="nav__link" onClick={toggleLanguage}>{language === 'es' ? 'Idioma: Español' : 'Language: English'}</a></li>
+
+                    
+                    <li className="dropdown__item">
+                        <div className="nav__link">
+                            Generos <i className="ri-arrow-down-s-line dropdown__arrow"></i>
+                        </div>
+
+                        <ul className="dropdown__menu">
+                            <li>
+                            <a href="#" className="dropdown__link">
+                                <i></i> Pop
+                            </a>                          
+                            </li>
+
+                            <li>
+                            <a href="#" className="dropdown__link">
+                                <i></i> Jazz
+                            </a>
+                            </li>
+
+                            <li>
+                            <a href="#" className="dropdown__link">
+                                <i></i> Electronic
+                            </a>
+                            </li>
+
+                            <li>
+                            <a href="#" className="dropdown__link">
+                                <i></i> Hip Hop
+                            </a>
+                            </li>
+
+                            <li>
+                            <a href="#" className="dropdown__link">
+                                <i></i> Funk
+                            </a>
+                            </li>
+
+                            <li>
+                            <a href="#" className="dropdown__link">
+                                <i></i> Country
+                            </a>
+                            </li>
+
+                            <li>
+                            <a href="#" className="dropdown__link">
+                                <i className="line"></i> Rock
+                            </a>
+                            </li>
+
+                            <li>
+                            <a href="#" className="dropdown__link">
+                                <i className="line"></i> Otros
+                            </a>
+                            </li>
+
+                            
+                            <li className="dropdown__subitem">
+                            <div className="dropdown__link">
+                                <i className="ri-bar-chart-line"></i> Reports <i className="ri-add-line dropdown__add"></i>
+                            </div>
+
+                            <ul className="dropdown__submenu">
+                                <li>
+                                    <a href="#" className="dropdown__sublink">
+                                        <i className="ri-file-list-line"></i> Documents
+                                    </a>
+                                </li>
+        
+                                <li>
+                                    <a href="#" className="dropdown__sublink">
+                                        <i className="ri-cash-line"></i> Payments
+                                    </a>
+                                </li>
+        
+                                <li>
+                                    <a href="#" className="dropdown__sublink">
+                                        <i className="ri-refund-2-line"></i> Refunds
+                                    </a>
+                                </li>
+                            </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    
+                    <li><a href="#" className="nav__link">{t('promotions')}</a></li>
+
+                    <li><a href="#" className="nav__link"><i className="ri-shopping-cart-line me-1" onClick={handleCartRedirect}></i>{t('cart')}</a></li>
+                </ul>
+                </div>
+            </nav>
+        </header>
   );
 }

@@ -1,0 +1,12 @@
+[
+    {
+        "name": "Product 1",
+        "price": "$10.00",
+        "link": "https://example.com/product1"
+    },
+    {
+        "name": "Product 2",
+        "price": "$15.00",
+        "link": "https://example.com/product2"
+    }
+]

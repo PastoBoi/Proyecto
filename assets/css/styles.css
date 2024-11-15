@@ -41,6 +41,10 @@
   margin: 0;
 }
 
+header{
+  border-bottom: 1px groove #36453a; /* Cambia el grosor, color y estilo según prefieras */
+}
+
 body {
   font-family: var(--body-font);
   font-size: var(--normal-font-size);
@@ -101,6 +105,7 @@ a {
 
 .nav__logo {
   display: inline-flex;
+  font-size: 30px;
   align-items: center;
   column-gap: .25rem;
   font-weight: var(--font-semi-bold);
@@ -109,8 +114,8 @@ a {
 }
 
 .nav__logo i {
-  font-weight: initial;
-  font-size: 1.25rem;
+  font-weight: 100;
+  font-size: 2.5rem;
 }
 
 .carrito-link {
@@ -361,9 +366,6 @@ a {
     transition: top .3s;
   }
 }
-main {
-  margin-top: 100px;
-}
 
 .promoted-products{
   margin-top: -20px;
@@ -371,6 +373,7 @@ main {
 
 .product-price{
   color: #8e9f91;
+  max-width: 14vw;
 }
 
 .product-item {
@@ -384,6 +387,7 @@ main {
 
 .product-name{
   color: aliceblue;
+  max-width: 12vw;
 }
 
 .add-button{
@@ -410,7 +414,7 @@ main {
 
 @media screen and (min-width: 768px) and (min-width: 1024px) {
   main {
-    margin-top: 100px; /* Ajuste para tabletas */
+    margin-top: 120px; /* Ajuste para tabletas */
   }
   img {
     width: 14vw; /* Establecer un ancho deseado para tabletas */
@@ -418,7 +422,7 @@ main {
     margin-top: 20px;
   }
   .bg-imagen {
-    background-image: url('https://cdn.usegalileo.ai/sdxl10/f3329a6c-b9dd-490e-a32e-3f790c0bc3ad.png');
+    background-image: url('https://www.futuro.cl/wp-content/uploads/2021/02/30c566ae92f772fc167be965275f5851.jpg');
     background-size: auto;
     background-position: center;
     color: white; /* Cambia el color del texto si es necesario para mejorar la legibilidad */
@@ -437,11 +441,8 @@ h2{
 }
 
 .outlined-text {
-      color: white; /* Color del texto */
-      text-shadow: 1px 1px 0px #a3a0a0, 
-                   -1px -1px 0px #a3a0a0,
-                   1px -1px 0px #a3a0a0,
-                   -1px 1px 0px #a3a0a0;
+      color: rgb(255, 255, 255); /* Color del texto */
+      font-weight: 500;
    }
 
 .form-control::placeholder {
