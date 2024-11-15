@@ -35,6 +35,12 @@ const jsonData = [
         "price": "$10.00",
         "link": "https://example.com/product1",
         "image": "https://e-cdns-images.dzcdn.net/images/cover/43f9366c184d81b0fa1eaf86e39587b8/500x500-000000-80-0-0.jpg"
+    },
+    {
+        "name": "Rokotsu  -  Syudou",
+        "price": "$10.00",
+        "link": "https://example.com/product1",
+        "image": "https://e-cdns-images.dzcdn.net/images/cover/a114e2133cc6dcbd1d19857b61e4a099/500x500-000000-80-0-0.jpg"
     }
 ];
 
