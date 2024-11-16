@@ -604,3 +604,13 @@ input{
   margin-top: 20px;
   font-size: 20px;
 }
+
+input[type="search"]::-webkit-search-cancel-button {
+  display: none; /* For Webkit browsers (Chrome, Safari) */
+}
+
+input[type="search"] {
+  -webkit-appearance: none; /* Disable the default appearance in Webkit browsers */
+  -moz-appearance: none;    /* Disable the default appearance in Firefox */
+  appearance: none;         /* Standardize across all browsers */
+}

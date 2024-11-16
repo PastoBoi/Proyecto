@@ -29,7 +29,8 @@ const translations = {
       SearchPlaceholder: "Search disks",
       SearchButton: "Search",
       PromotedDisks: "Promoted Disks",
-      Results: "Search Results"
+      Results: "Search Results",
+      latest: "latest disks"
     },
     es: {
       title: "Registro",
@@ -59,7 +60,8 @@ const translations = {
       SearchPlaceholder: "Buscar discos",
       SearchButton: "Buscar",
       PromotedDisks: "Discos Promocionados",
-      Results: "Resultados de Busqueda"
+      Results: "Resultados de Busqueda",
+      latest: "Ultimos discos"
     },
     // Puedes agregar más idiomas aquí
   };
