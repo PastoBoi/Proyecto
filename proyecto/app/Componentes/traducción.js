@@ -28,7 +28,7 @@ const translations = {
       SloganFoot: "Discover sustainable music with records made from recycled materials",
       SearchPlaceholder: "Search disks",
       SearchButton: "Search",
-      PromotedDisks: "Promoted Disks",
+      PromotedDisks: "Promoted CDs",
       Results: "Search Results",
       latest: "latest disks"
     },
