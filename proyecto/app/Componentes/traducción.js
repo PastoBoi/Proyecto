@@ -30,7 +30,8 @@ const translations = {
       SearchButton: "Search",
       PromotedDisks: "Promoted CDs",
       Results: "Search Results",
-      latest: "latest disks"
+      latest: "latest disks",
+      Todos_los_derechos_reservados: "All rights reserved"
     },
     es: {
       title: "Registro",
@@ -61,7 +62,8 @@ const translations = {
       SearchButton: "Buscar",
       PromotedDisks: "Discos Promocionados",
       Results: "Resultados de Busqueda",
-      latest: "Ultimos discos"
+      latest: "Ultimos discos",
+      Todos_los_derechos_reservados: "Todos los  derechos reservados"
     },
     // Puedes agregar más idiomas aquí
   };
