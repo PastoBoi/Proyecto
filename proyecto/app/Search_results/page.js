@@ -120,7 +120,7 @@ export default function InterfazPage() {
 
             <footer className="bg-dark text-white py-4">
                 <div className="container text-center">
-                    <p>&copy; 2024 Sustainable Sound. {t("Todos los derechos reservados")}.</p>
+                    <p>&copy; 2024 Sustainable Sound. {t("Todos_los_derechos_reservados")}.</p>
                 </div>
             </footer>
         </>
