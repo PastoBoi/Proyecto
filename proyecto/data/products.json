@@ -34,5 +34,11 @@
         "price": "$10.00",
         "link": "https://example.com/product1",
         "image": "https://e-cdns-images.dzcdn.net/images/cover/a114e2133cc6dcbd1d19857b61e4a099/500x500-000000-80-0-0.jpg"
+    },
+    {
+        "name": "LCD Soundsystem - LCD Soundsystem",
+        "price": "$10.00",
+        "link": "https://example.com/product1",
+        "image": "https://upload.wikimedia.org/wikipedia/en/7/74/Afc_lcd_LCDSoundsystem.gif"
     }
 ]
