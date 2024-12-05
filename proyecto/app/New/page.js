@@ -4,72 +4,45 @@ import { useState, useEffect, useContext } from "react";
 import { LanguageContext } from "../Componentes/languageContext";
 import translations from "../Componentes/traducción";
 
-// Sample JSON data (you will likely get this from an API)
-const jsonData = [
-    {
-        "name": "Hisohiso Banashi",
-        "author": "Zutomayo",
-        "price": "$10.00",
-        "link": "https://example.com/product1",
-        "image": "https://cdns-images.dzcdn.net/images/cover/29ecd861ce6f102c6545e13a1248edb7/0x1900-000000-80-0-0.jpg",
-        "genre": ["J-rock", "Alternative Rock"],
-        "ReleaseDate": "2023-05-01"
-    },
-    {
-        "name": "Otogi",
-        "author": "Eve",
-        "price": "$10.00",
-        "link": "https://example.com/product1",
-        "image": "https://cdns-images.dzcdn.net/images/cover/e62edb9b94f7bcf0d7770c73d97562f6/0x1900-000000-80-0-0.jpg",
-        "genre": ["J-pop", "Rock"],
-        "ReleaseDate": "2022-08-15"
-    },
-    {
-        "name": "Kyouugen",
-        "author": "Ado",
-        "price": "$10.00",
-        "link": "https://example.com/product1",
-        "image": "https://e-cdns-images.dzcdn.net/images/cover/d00ed424dd8927d561034e6d89cb05b5/500x500-000000-80-0-0.jpg",
-        "genre": ["J-pop", "Pop"],
-        "ReleaseDate": "2022-11-22"
-    },
-    {
-        "name": "Miracle Milk",
-        "author": "Mili",
-        "price": "$10.00",
-        "link": "https://example.com/product1",
-        "image": "https://e-cdns-images.dzcdn.net/images/cover/1285d6765ae590bd717b886bb8b8dbd8/500x500-000000-80-0-0.jpg",
-        "genre": ["Pop", "Electronica"],
-        "ReleaseDate": "2021-03-10"
-    },
-    {
-        "name": "Pure",
-        "author": "Co Shiu Ne",
-        "price": "$10.00",
-        "link": "https://example.com/product1",
-        "image": "https://e-cdns-images.dzcdn.net/images/cover/43f9366c184d81b0fa1eaf86e39587b8/500x500-000000-80-0-0.jpg",
-        "genre": ["Electronic", "Rock"],
-        "ReleaseDate": "2020-07-25"
-    },
-    {
-        "name": "Rokotsu",
-        "author": "Syudou",
-        "price": "$10.00",
-        "link": "https://example.com/product1",
-        "image": "https://e-cdns-images.dzcdn.net/images/cover/a114e2133cc6dcbd1d19857b61e4a099/500x500-000000-80-0-0.jpg",
-        "genre": ["Pop", "Rock"],
-        "ReleaseDate": "2024-01-12"
-    }
-];
-
 export default function InterfazPage() {
     const { language } = useContext(LanguageContext); // Obtén el idioma del contexto
     const t = (key) => translations[language]?.[key] || key;
 
-    // State to hold the items
-    const [items, setItems] = useState(jsonData);
+    // Estado para almacenar los productos
+    const [items, setItems] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
-    // Sort the items by release date, from newest to oldest
+    // Estado para el producto seleccionado
+    const [selectedProduct, setSelectedProduct] = useState(null);
+
+    const handleProductClick = (product) => {
+        setSelectedProduct(product); // Selecciona el producto al hacer clic
+    };
+
+    const handleClosePopup = () => {
+        setSelectedProduct(null); // Cierra el pop-up
+    };
+
+    useEffect(() => {
+        const fetchProducts = async () => {
+            try {
+                const response = await fetch('/api/products'); // Llama al endpoint de la API
+                if (!response.ok) {
+                    throw new Error('Error al obtener los productos');
+                }
+                const data = await response.json();
+                setItems(data); // Actualiza los productos en el estado
+            } catch (error) {
+                setError(error.message);
+            } finally {
+                setLoading(false); // Desactiva el estado de carga
+            }
+        };
+
+        fetchProducts();
+    }, []);
+
     const sortedItems = [...items].sort((a, b) => new Date(b.ReleaseDate) - new Date(a.ReleaseDate));
 
     return (
@@ -79,41 +52,78 @@ export default function InterfazPage() {
                     <div className="container2">
                         <h3 className="resultados">{t("latest")}</h3>
                         <div className="Albumes d-flex flex-wrap justify-content-around">
-                            {/* Dynamically render sorted items */}
-                            {sortedItems.length > 0 ? (
+                            {loading ? (
+                                <p>{t("Cargando...")}</p>
+                            ) : error ? (
+                                <p className="text-danger">{t("Error")}: {error}</p>
+                            ) : sortedItems.length > 0 ? (
                                 sortedItems.map((item, index) => (
-                                    <div key={index} className="product-item">
-                                        <a href={item.link}>
-                                            <img
-                                                src={item.image}
-                                                alt={item.name}
-                                                className="product-image rounded"
-                                            />
-                                            <div className="Name-price d-flex flex-row justify-content-between">
-                                                <div className="d-flex flex-column">
-                                                    <div className="product-name mt-2">{item.name} - {item.author}</div>
-                                                    <div className="product-price">{item.price}</div>
-                                                </div>
-                                                <div className="add-button">
-                                                    <i className="ri-add-box-line"></i>
-                                                </div>
+                                    <div
+                                        key={index}
+                                        className="product-item"
+                                        onClick={() => handleProductClick(item)}
+                                    >
+                                        <img
+                                            src={item.image}
+                                            alt={item.name}
+                                            className="product-image rounded"
+                                        />
+                                        <div className="Name-price d-flex flex-row justify-content-between">
+                                            <div className="d-flex flex-column">
+                                                <div className="product-name mt-2">{item.name} - {item.author}</div>
+                                                <div className="product-price">{item.price}</div>
                                             </div>
-                                        </a>
+                                            <div className="add-button">
+                                                <i className="ri-add-box-line"></i>
+                                            </div>
+                                        </div>
                                     </div>
                                 ))
                             ) : (
-                                <p>{t("NoResultsFound")}</p> // Optional message for no results
+                                <p>{t("NoResultsFound")}</p>
                             )}
                         </div>
                     </div>
                 </section>
             </main>
 
+            {/* Footer */}
             <footer className="bg-dark text-white py-4">
                 <div className="container text-center">
                     <p>&copy; 2024 Sustainable Sound. {t("Todos los derechos reservados")}.</p>
                 </div>
             </footer>
+
+            {/* Pop-Up */}
+            {selectedProduct && (
+                <div className="product-popup">
+                    <div className="popup-content text-black">
+                        <button className="close-button" onClick={handleClosePopup}>
+                            &times;
+                        </button>
+                        <div className="popup-layout">
+                            <div className="popup-image-container">
+                                <img src={selectedProduct.image} alt={selectedProduct.name} className="popup-image" />
+                            </div>
+                            <div className="popup-info">
+                                <h1 className="popup-title">{selectedProduct.name}</h1>
+                                <p className="popup-genres">{selectedProduct.genre1} / {selectedProduct.genre2}</p>
+                                <div className="tracklist-container">
+                                    <h3 className="tracklist-header">{t("tracklist")}</h3>
+                                    <div className="tracklist-box">
+                                        {selectedProduct.tracklist.map((track, index) => (
+                                            <p key={index} className="tracklist-item">
+                                                {index + 1}. {track}
+                                            </p>
+                                        ))}
+                                    </div>
+                                </div>
+                                <button className="add-to-cart-button">{t("Cart")}</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
         </>
     );
 }

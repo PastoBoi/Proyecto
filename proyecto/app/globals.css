@@ -614,3 +614,170 @@ input[type="search"] {
   -moz-appearance: none;    /* Disable the default appearance in Firefox */
   appearance: none;         /* Standardize across all browsers */
 }
+
+.product-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Pop-Up: Cobertura completa de la pantalla */
+.product-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.popup-content {
+  background: white;
+  border-radius: 10px;
+  width: 80%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Cerrar el pop-up */
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 30px;
+  cursor: pointer;
+  color: black;
+  font-weight: bold;
+}
+
+/* Layout del contenido */
+.popup-layout {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+/* Imagen grande a la izquierda */
+.popup-image-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0;
+  padding: 20px;
+}
+
+.popup-image {
+  width: 600px;
+  height: 600px;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* Información a la derecha */
+.popup-info {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.popup-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.popup-genres {
+  font-size: 1.2rem;
+  color: black;
+  margin-bottom: 20px;
+}
+
+.popup-description {
+  font-size: 1rem;
+  margin-bottom: 40px;
+  line-height: 1.5;
+}
+
+/* Botón largo para "Añadir al Carrito" */
+.add-to-cart-button {
+  background-color: green;
+  color: white;
+  border: none;
+  padding: 15px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  width: 100%;
+  max-width: 300px;
+  align-self: center;
+}
+
+.tracklist-container {
+  margin-top: 20px;
+}
+
+/* Título del tracklist */
+.tracklist-header {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+/* Caja del tracklist (colapsable) */
+.tracklist-box {
+  max-height: 150px; /* Tamaño inicial */
+  overflow-y: auto;
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  transition: max-height 0.3s ease;
+}
+
+/* Estilo de los ítems del tracklist */
+.tracklist-item {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 5px;
+}
+
+/* Botón largo para "Añadir al Carrito" */
+.add-to-cart-button {
+  background-color: green;
+  color: white;
+  border: none;
+  padding: 15px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  width: 100%;
+  max-width: 300px;
+  align-self: center;
+}

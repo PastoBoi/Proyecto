@@ -8,10 +8,11 @@ export default function InterfazPage() {
     const { language } = useContext(LanguageContext); // Obtener idioma desde el contexto
     const t = (key) => translations[language]?.[key] || key;
 
-    // Estados para los productos y búsqueda
+    // Estados para los productos, búsqueda y pop-up
     const [products, setProducts] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
+    const [selectedProduct, setSelectedProduct] = useState(null);
 
     // Cargar productos desde la API
     useEffect(() => {
@@ -36,6 +37,16 @@ export default function InterfazPage() {
             product.name.toLowerCase().includes(searchTerm.toLowerCase())
         );
         setFilteredProducts(filtered); // Actualizar los productos filtrados
+    };
+
+    // Manejar clic en un producto
+    const handleProductClick = (product) => {
+        setSelectedProduct(product);
+    };
+
+    // Cerrar el pop-up
+    const handleClosePopup = () => {
+        setSelectedProduct(null);
     };
 
     return (
@@ -77,23 +88,26 @@ export default function InterfazPage() {
                             {/* Renderizar productos filtrados */}
                             {filteredProducts.length > 0 ? (
                                 filteredProducts.map((product, index) => (
-                                    <div key={index} className="product-item">
-                                        <a href={product.link}>
-                                            <img
-                                                src={product.image}
-                                                alt={product.name}
-                                                className="product-image rounded"
-                                            />
-                                            <div className="Name-price d-flex flex-row justify-content-between">
-                                                <div className="d-flex flex-column">
-                                                    <div className="product-name mt-2">{product.name}</div>
-                                                    <div className="product-price">{product.price}</div>
-                                                </div>
-                                                <div className="add-button">
-                                                    <i className="ri-add-box-line"></i>
-                                                </div>
+                                    <div
+                                        key={index}
+                                        className="product-item"
+                                        onClick={() => handleProductClick(product)}
+                                        style={{ cursor: "pointer" }}
+                                    >
+                                        <img
+                                            src={product.image}
+                                            alt={product.name}
+                                            className="product-image rounded"
+                                        />
+                                        <div className="Name-price d-flex flex-row justify-content-between">
+                                            <div className="d-flex flex-column">
+                                                <div className="product-name mt-2">{product.name}</div>
+                                                <div className="product-price">{product.price}</div>
                                             </div>
-                                        </a>
+                                            <div className="add-button">
+                                                <i className="ri-add-box-line"></i>
+                                            </div>
+                                        </div>
                                     </div>
                                 ))
                             ) : (
@@ -104,6 +118,47 @@ export default function InterfazPage() {
                 </section>
             </main>
 
+            {/* Pop-Up para Detalles del Producto */}
+            {selectedProduct && (
+                <div className="product-popup">
+                    <div className="popup-content text-black">
+                        <button className="close-button" onClick={handleClosePopup}>
+                            &times;
+                        </button>
+                        <div className="popup-layout">
+                            {/* Imagen grande a la izquierda */}
+                            <div className="popup-image-container">
+                                <img
+                                    src={selectedProduct.image}
+                                    alt={selectedProduct.name}
+                                    className="popup-image"
+                                />
+                            </div>
+                            {/* Información del producto a la derecha */}
+                            <div className="popup-info">
+                                <h1 className="popup-title">{selectedProduct.name}</h1>
+                                <p className="popup-genres">{selectedProduct.genre1} / {selectedProduct.genre2}</p>
+                                
+                                {/* Tracklist */}
+                                <div className="tracklist-container">
+                                    <h3 className="tracklist-header">{t("tracklist")}:</h3>
+                                    <div className="tracklist-box">
+                                        {selectedProduct.tracklist.map((track, index) => (
+                                            <p key={index} className="tracklist-item">
+                                                {index + 1}. {track}
+                                            </p>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                <button className="add-to-cart-button">{t("Add to Cart")}</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+
             <footer className="bg-dark text-white py-4">
                 <div className="container text-center">
                     <p>&copy; 2024 Sustainable Sound. {t("Todos los derechos reservados")}.</p>
@@ -112,3 +167,4 @@ export default function InterfazPage() {
         </>
     );
 }
+

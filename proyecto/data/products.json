@@ -2,24 +2,32 @@
     {
         "name": "Hisohiso Banashi  -  Zutomayo",
         "price": "$10.00",
+        "genre1": "ROCK",
+        "genre2": "J-POP",
         "link": "https://example.com/product1",
         "image": "https://cdns-images.dzcdn.net/images/cover/29ecd861ce6f102c6545e13a1248edb7/0x1900-000000-80-0-0.jpg"
     },
     {
         "name": "Otogi  -  Eve",
         "price": "$10.00",
+        "genre1": "ROCK",
+        "genre2":"J-POP",
         "link": "https://example.com/product1",
         "image": "https://cdns-images.dzcdn.net/images/cover/e62edb9b94f7bcf0d7770c73d97562f6/0x1900-000000-80-0-0.jpg"
     },
     {
         "name": "Kyouugen  -  Ado",
         "price": "$10.00",
+        "genre1":"ROCK",
+        "genre2":"J-POP",
         "link": "https://example.com/product1",
         "image": "https://e-cdns-images.dzcdn.net/images/cover/d00ed424dd8927d561034e6d89cb05b5/500x500-000000-80-0-0.jpg"
     },
     {
         "name": "Miracle Milk  -  Mili",
         "price": "$10.00",
+        "genre1":"POP",
+        "genre2":"J-POP",
         "link": "https://example.com/product1",
         "image": "https://e-cdns-images.dzcdn.net/images/cover/1285d6765ae590bd717b886bb8b8dbd8/500x500-000000-80-0-0.jpg"
     },
@@ -32,13 +40,68 @@
     {
         "name": "Rokotsu  -  Syudou",
         "price": "$10.00",
+        "genre1":"ROCK",
+        "genre2":"J-POP",
         "link": "https://example.com/product1",
         "image": "https://e-cdns-images.dzcdn.net/images/cover/a114e2133cc6dcbd1d19857b61e4a099/500x500-000000-80-0-0.jpg"
     },
     {
         "name": "LCD Soundsystem - LCD Soundsystem",
         "price": "$10.00",
+        "genre1": "ROCK",
+        "genre2": "ELECTRONICA",
+        "tracklist": [
+            "Daft Punk is Playing at My House",
+            "Too Much Love",
+            "Tribulations",
+            "Movement",
+            "Never as Tired as When I'm Waking Up",
+            "On Repeat",
+            "Thrills",
+            "Disco Infiltrator",
+            "Great Release",
+            "Yr City's a Sucker"
+
+        ],
         "link": "https://example.com/product1",
         "image": "https://upload.wikimedia.org/wikipedia/en/7/74/Afc_lcd_LCDSoundsystem.gif"
+    },
+    {
+        "name": "American Dream - LCD Soundsystem",
+        "price": "$12.00",
+        "genre1": "ROCK",
+        "genre2": "ELECTRONICA",
+        "tracklist": [
+            "oh baby",
+            "other voices",
+            "i used to",
+            "change yr mind",
+            "how do you sleep?",
+            "tonite",
+            "call the police",
+            "american dream",
+            "emotional haircut",
+            "black screen"
+        ],
+        "link": "https://example.com/product1",
+        "image": "https://upload.wikimedia.org/wikipedia/en/thumb/4/4f/LCD_Soundsystem_-_American_Dream.png/220px-LCD_Soundsystem_-_American_Dream.png"
+    },
+    {
+        "name": "Remain in Light - Talking Heads",
+        "price": "$10.00",
+        "genre1": "ROCK",
+        "genre2": "NEW WAVE",
+        "tracklist": [
+            "Born Under Punches (The Heat Goes On)",
+            "Crosseyed and Painless",
+            "The Great Curve",
+            "Once in a Lifetime",
+            "Houses in Motion",
+            "Seen and Not Seen",
+            "Listening Wind",
+            "The Overload"
+        ],
+        "link": "https://example.com/product1",
+        "image": "https://upload.wikimedia.org/wikipedia/en/thumb/2/2d/TalkingHeadsRemaininLight.jpg/220px-TalkingHeadsRemaininLight.jpg"       
     }
 ]
