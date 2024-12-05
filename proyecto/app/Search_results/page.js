@@ -65,7 +65,7 @@ export default function InterfazPage() {
                                 type="search"
                                 className="form-control"
                                 placeholder={t("SearchPlaceholder")}
-                                aria-label={t("Buscar discos")}
+                                aria-label={t("Buscardiscos")}
                                 style={{
                                     backgroundColor: "#202c24",
                                     border: "none",

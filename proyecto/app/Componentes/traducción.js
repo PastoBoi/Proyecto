@@ -31,7 +31,8 @@ const translations = {
       PromotedDisks: "Promoted CDs",
       Results: "Search Results",
       latest: "latest disks",
-      Todos_los_derechos_reservados: "All rights reserved"
+      Todos_los_derechos_reservados: "All rights reserved",
+      Buscardiscos: "Search disks"
     },
     es: {
       title: "Registro",
@@ -63,7 +64,8 @@ const translations = {
       PromotedDisks: "Discos Promocionados",
       Results: "Resultados de Busqueda",
       latest: "Ultimos discos",
-      Todos_los_derechos_reservados: "Todos los  derechos reservados"
+      Todos_los_derechos_reservados: "Todos los  derechos reservados",
+      Buscardiscos: "Buscar discos"
     },
     // Puedes agregar más idiomas aquí
   };
