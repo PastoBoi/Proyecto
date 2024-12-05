@@ -39,9 +39,10 @@ export default function InterfazPage() {
         
         // Filter items based on search term
         const filtered = items.filter(item =>
-            item.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
-            item.author.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            item.genre.join(" ").toLowerCase().includes(searchTerm.toLowerCase()) // Join genres into a single string
+            (item.name?.toLowerCase()?.includes(searchTerm.toLowerCase())) ||
+            (item.author?.toLowerCase()?.includes(searchTerm.toLowerCase())) ||
+            (item.genre?.join(" ")?.toLowerCase()?.includes(searchTerm.toLowerCase())) || // Join genres into a single string
+            (item.tracklist?.some(track => track.toLowerCase().includes(searchTerm.toLowerCase()))) // Search in tracklist
         );
         
         setFilteredItems(filtered); // Update filtered items
