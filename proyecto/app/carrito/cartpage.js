@@ -77,4 +77,4 @@ function CartPage() {
   );
 }
 
-export default withAuth(CartPage);
+export default CartPage;
