@@ -58,20 +58,14 @@ export default function InterfazPage() {
                             <h2 className="display-4 outlined-text">{t("Slogan")}</h2>
                             <p className="lead outlined-subtext">{t("SloganFoot")}</p>
                         </div>
-                        <form onSubmit={handleSearch} className="d-flex justify-content-center mt-4">
+                        <form action="/Search_results" method="get">
                             <div className="input-group w-50 p-2">
-                                <input
-                                    type="search"
+                                <input 
                                     className="form-control"
+                                    type="text" 
+                                    name="query" 
                                     placeholder={t("SearchPlaceholder")}
                                     aria-label={t("Buscar discos")}
-                                    style={{
-                                        backgroundColor: "#202c24",
-                                        border: "none",
-                                        borderRadius: "10px",
-                                    }}
-                                    value={searchTerm}
-                                    onChange={(e) => setSearchTerm(e.target.value)} // Actualizar el término de búsqueda
                                 />
                                 <button type="submit" className="boton-busc">
                                     {t("SearchButton")}

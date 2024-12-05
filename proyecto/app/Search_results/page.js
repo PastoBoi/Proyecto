@@ -4,26 +4,32 @@ import { useState, useEffect, useContext } from "react";
 import { LanguageContext } from "../Componentes/languageContext";
 import translations from "../Componentes/traducción";
 
-export default function InterfazPage() {
+export default function SearchResults() {
     const { language } = useContext(LanguageContext); // Obtén el idioma del contexto
     const t = (key) => translations[language]?.[key] || key;
 
-    // State to hold the items
+    const [searchQuery, setSearchQuery] = useState("");
     const [items, setItems] = useState([]);
-    const [searchTerm, setSearchTerm] = useState("");
     const [filteredItems, setFilteredItems] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
     useEffect(() => {
         const fetchProducts = async () => {
+            const params = new URLSearchParams(window.location.search);
+            const query = params.get("query") || "";
+            setSearchQuery(query);
+
             try {
                 const response = await fetch("/api/products");
                 if (!response.ok) throw new Error("Error fetching products");
 
                 const data = await response.json();
                 setItems(data);
-                setFilteredItems(data); // Initialize filtered items
+
+                // Filtrar productos inmediatamente basados en el query
+                const filtered = filterItems(data, query);
+                setFilteredItems(filtered);
             } catch (err) {
                 setError(err.message);
             } finally {
@@ -34,18 +40,20 @@ export default function InterfazPage() {
         fetchProducts();
     }, []);
 
-    const handleSearch = (e) => {
-        e.preventDefault(); // Prevent form from submitting and refreshing the page
-        
-        // Filter items based on search term
-        const filtered = items.filter(item =>
-            (item.name?.toLowerCase()?.includes(searchTerm.toLowerCase())) ||
-            (item.author?.toLowerCase()?.includes(searchTerm.toLowerCase())) ||
-            (item.genre?.join(" ")?.toLowerCase()?.includes(searchTerm.toLowerCase())) || // Join genres into a single string
-            (item.tracklist?.some(track => track.toLowerCase().includes(searchTerm.toLowerCase()))) // Search in tracklist
+    const filterItems = (items, term) => {
+        if (!term) return items;
+        return items.filter(item =>
+            (item.name?.toLowerCase()?.includes(term.toLowerCase())) ||
+            (item.author?.toLowerCase()?.includes(term.toLowerCase())) ||
+            (item.genre?.join(" ")?.toLowerCase()?.includes(term.toLowerCase())) ||
+            (item.tracklist?.some(track => track.toLowerCase().includes(term.toLowerCase())))
         );
-        
-        setFilteredItems(filtered); // Update filtered items
+    };
+
+    const handleSearch = (e) => {
+        e.preventDefault();
+        const filtered = filterItems(items, searchQuery);
+        setFilteredItems(filtered);
     };
 
     if (loading) {
@@ -72,8 +80,8 @@ export default function InterfazPage() {
                                     border: "none",
                                     borderRadius: "10px",
                                 }}
-                                value={searchTerm}
-                                onChange={(e) => setSearchTerm(e.target.value)} // Update search term state
+                                value={searchQuery}
+                                onChange={(e) => setSearchQuery(e.target.value)}
                             />
                             <button
                                 type="submit"
@@ -89,7 +97,6 @@ export default function InterfazPage() {
                     <div className="container2">
                         <h3 className="resultados">{t("Results")}</h3>
                         <div className="Albumes d-flex flex-wrap justify-content-around">
-                            {/* Dynamically render filtered items */}
                             {filteredItems.length > 0 ? (
                                 filteredItems.map((item, index) => (
                                     <div key={index} className="product-item">
@@ -112,7 +119,7 @@ export default function InterfazPage() {
                                     </div>
                                 ))
                             ) : (
-                                <p>{t("NoResultsFound")}</p> // Optional message for no results
+                                <p>{t("NoResultsFound")}</p>
                             )}
                         </div>
                     </div>
