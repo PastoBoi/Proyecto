@@ -645,7 +645,7 @@ input[type="search"] {
 }
 
 .popup-content {
-  background: white;
+  background: var(--black-color);
   border-radius: 10px;
   width: 80%;
   height: 80%;
@@ -681,7 +681,7 @@ input[type="search"] {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f0f0f0;
+  background-color: var(--black-color);
   padding: 20px;
 }
 
@@ -695,6 +695,7 @@ input[type="search"] {
 
 /* Información a la derecha */
 .popup-info {
+  color: white;
   flex: 1;
   padding: 40px;
   display: flex;
@@ -703,6 +704,7 @@ input[type="search"] {
 }
 
 .popup-title {
+  color: white;
   font-size: 2.5rem;
   font-weight: bold;
   margin-bottom: 10px;
@@ -710,7 +712,7 @@ input[type="search"] {
 
 .popup-genres {
   font-size: 1.2rem;
-  color: black;
+  color: white;
   margin-bottom: 20px;
 }
 
@@ -752,7 +754,7 @@ input[type="search"] {
 .tracklist-box {
   max-height: 150px; /* Tamaño inicial */
   overflow-y: auto;
-  background-color: #f8f8f8;
+  background-color: #141313;
   border: 1px solid #ddd;
   border-radius: 5px;
   padding: 10px;
@@ -763,7 +765,6 @@ input[type="search"] {
 .tracklist-item {
   font-size: 1rem;
   line-height: 1.5;
-  margin-bottom: 5px;
 }
 
 /* Botón largo para "Añadir al Carrito" */
@@ -772,6 +773,7 @@ input[type="search"] {
   color: white;
   border: none;
   padding: 15px;
+  margin-top: 20px;
   font-size: 1.2rem;
   font-weight: bold;
   border-radius: 5px;
