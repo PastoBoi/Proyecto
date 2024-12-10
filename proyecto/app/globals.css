@@ -511,7 +511,7 @@ a {
   }
 }
 
-@media screen and (min-width: 768px) and (min-width: 1024px) {
+@media screen and (min-width: 1024px) {
   main {
     margin-top: 120px; /* Ajuste para tabletas */
   }
@@ -527,7 +527,30 @@ a {
     color: white; /* Cambia el color del texto si es necesario para mejorar la legibilidad */
     padding: 0; /* Espacio alrededor del texto */
     border-radius: 15px;
-    height: 400px;
+    height: 300px;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  main {
+    margin-top: 70px;
+  }
+  img {
+    width: 220px; /* Establecer el ancho deseado */
+    height: auto; /* Mantener la proporción de aspecto */
+  }
+  .input-group{
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    min-width: 500px;
+    background-color: #202c24; 
+    border-radius: 10px; 
+    gap: 10px;
+    border: 2px solid #36453a; /* Cambia el grosor, color y estilo según prefieras */
+  }
+  .form-control{
+    min-width: 75%;
   }
 }
 
