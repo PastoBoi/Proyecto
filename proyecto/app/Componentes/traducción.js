@@ -43,7 +43,19 @@ const translations = {
       Results: "Search Results",
       latest: "latest disks",
       Todos_los_derechos_reservados: "All rights reserved",
-      Buscardiscos: "Search disks"
+      Buscardiscos: "Search disks",
+      cartTitle: 'Your Cart',
+      cartEmpty: 'Your cart is empty.',
+      product: 'Product',
+      price: 'Price',
+      quantity: 'Quantity',
+      total: 'Total',
+      actions: 'Actions',
+      remove: 'Remove',
+      clearCart: 'Clear Cart',
+      checkout: 'Checkout',
+      checkoutSuccess: 'Purchase successful!'
+      
     },
     es: {
       title: "Registro",
@@ -87,7 +99,18 @@ const translations = {
       Results: "Resultados de Busqueda",
       latest: "Ultimos discos",
       Todos_los_derechos_reservados: "Todos los  derechos reservados",
-      Buscardiscos: "Buscar discos"
+      Buscardiscos: "Buscar discos",
+      cartTitle: 'Tu Carrito',
+      cartEmpty: 'Tu carrito está vacío.',
+      product: 'Producto',
+      price: 'Precio',
+      quantity: 'Cantidad',
+      total: 'Total',
+      actions: 'Acciones',
+      remove: 'Eliminar',
+      clearCart: 'Vaciar Carrito',
+      checkout: 'Finalizar Compra',
+      checkoutSuccess: 'Compra realizada con éxito!'
     },
     // Puedes agregar más idiomas aquí
   };
