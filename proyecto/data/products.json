@@ -121,8 +121,7 @@
     {
         "name": "LCD Soundsystem - LCD Soundsystem",
         "price": "$10.00",
-        "genre1": "ROCK",
-        "genre2": "ELECTRONICA",
+        "genre": ["ROCK","ELECTRONICA"],
         "tracklist": [
             "Daft Punk is Playing at My House",
             "Too Much Love",
@@ -142,8 +141,7 @@
     {
         "name": "American Dream - LCD Soundsystem",
         "price": "$12.00",
-        "genre1": "ROCK",
-        "genre2": "ELECTRONICA",
+        "genre": ["ROCK","ELECTRONICA"],
         "tracklist": [
             "oh baby",
             "other voices",
@@ -162,8 +160,7 @@
     {
         "name": "Remain in Light - Talking Heads",
         "price": "$10.00",
-        "genre1": "ROCK",
-        "genre2": "NEW WAVE",
+        "genre": ["ROCK","NEW WAVE"],
         "tracklist": [
             "Born Under Punches (The Heat Goes On)",
             "Crosseyed and Painless",

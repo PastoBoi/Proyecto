@@ -1,87 +1,103 @@
 "use client";
 
-import { useState, useEffect, useContext  } from 'react';
-import {LanguageContext} from '../Componentes/languageContext'
-import { useRouter } from 'next/navigation';
-import translations from '../Componentes/traducción';
+import { useState, useContext } from "react";
+import { useRouter } from "next/navigation";
+import { LanguageContext } from "../Componentes/languageContext";
+import translations from "../Componentes/traducción";
 
 export default function RegisterPage() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const router = useRouter();
   const { language } = useContext(LanguageContext);
 
-  // Función para traducir textos
-  const t = (key) => {
-    return translations[language][key] || key;
-  };
-
-
-  // Cargar datos desde Local Storage al montar el componente
-  useEffect(() => {
-    const storedUsername = localStorage.getItem('username');
-    if (storedUsername) {
-      setUsername(storedUsername);
-      // Opcional: redirigir si el usuario ya está registrado
-      // router.push('/dashboard');
-    }
-  }, [router]);
+  const t = (key) => translations[language][key] || key;
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    const response = await fetch('/api/register', {
-      method: 'POST',
+    if (password !== confirmPassword) {
+      alert(t("passwordMismatch"));
+      return;
+    }
+    const response = await fetch("/api/register", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify({ username, password })
+      body: JSON.stringify({ username, email, password }),
     });
 
     if (response.ok) {
-      alert(t('registerSuccess'));
-      localStorage.setItem('username', username);
-      router.push('/login'); // Redirige a la página de inicio de sesión después de registrarse
+      alert(t("registerSuccess"));
+      router.push(`/login?lang=${language}`); // Redirigir manteniendo el idioma
     } else if (response.status === 409) {
-      alert(t('userExists'));
+      alert(t("userExists"));
     } else {
-      alert(t('registerError'));
+      alert(t("registerError"));
     }
   };
 
+  const goToLogin = () => {
+    router.push(`/login?lang=${language}`); // Navegar a Login manteniendo el idioma
+  };
+
   return (
-    <div
-      className="flex flex-col items-center justify-center min-h-screen bg-cover bg-center"
-      style={{
-        backgroundImage: "url('https://www.concierto.cl/wp-content/uploads/2018/09/Obsolete_CDs.jpg')",
-      }}
-    >
-      <div className="box-border bg-black bg-opacity-90 p-6 rounded-xl">
-        <h2 className="text-3xl font-bold mb-6 text-purple-900">{t('header')}</h2>
-        <form onSubmit={handleRegister} className="flex flex-col w-80 gap-4 text-purple-900 font-bold">
-          <label className="flex flex-col">
-            {t('username')}
+    <div className="auth-page">
+      <div className="form-box">
+        <h2 className="form-title">{t("title")}</h2>
+        <form onSubmit={handleRegister}>
+          <label className="form-label">
+            {t("username")}
             <input
+              className="form-input"
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               required
-              className="p-2 border rounded mt-1 text-black bg-white"
             />
           </label>
-          <label className="flex flex-col">
-            {t('password')}
+          <label className="form-label">
+            {t("email")}
             <input
+              className="form-input"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </label>
+          <label className="form-label">
+            {t("password")}
+            <input
+              className="form-input"
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              className="p-2 border rounded mt-1 text-black bg-white"
             />
           </label>
-          <button type="submit" className="bg-blue-600 text-white py-2 rounded hover:bg-blue-700">
-            {t('registerButton')}
+          <label className="form-label">
+            {t("confirmPassword")}
+            <input
+              className="form-input"
+              type="password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              required
+            />
+          </label>
+          <button className="btn-submit" type="submit">
+            {t("registerButton")}
           </button>
         </form>
+        <p className="auth-footer">
+          {t("alreadyHaveAccount")}{" "}
+          <a onClick={goToLogin} className="auth-link">
+            {t("loginHere")}
+          </a>
+        </p>
       </div>
     </div>
   );

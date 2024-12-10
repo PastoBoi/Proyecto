@@ -131,26 +131,34 @@ export default function InterfazPage() {
                             {/* Información del producto a la derecha */}
                             <div className="popup-info">
                                 <h1 className="popup-title">{selectedProduct.name}</h1>
-                                <p className="popup-genres">{selectedProduct.genre1} / {selectedProduct.genre2}</p>
-                                
+                                {/* Mostrar géneros unidos por "/" */}
+                                <p className="popup-genres">
+                                    {selectedProduct.genre?.join(" / ") || t("No genre available")}
+                                </p>
+
                                 {/* Tracklist */}
                                 <div className="tracklist-container">
                                     <h3 className="tracklist-header">{t("tracklist")}:</h3>
                                     <div className="tracklist-box">
-                                        {selectedProduct.tracklist.map((track, index) => (
-                                            <p key={index} className="tracklist-item">
-                                                {index + 1}. {track}
-                                            </p>
-                                        ))}
+                                        {Array.isArray(selectedProduct.tracklist) && selectedProduct.tracklist.length > 0 ? (
+                                            selectedProduct.tracklist.map((track, index) => (
+                                                <p key={index} className="tracklist-item">
+                                                    {index + 1}. {track}
+                                                </p>
+                                            ))
+                                        ) : (
+                                            <p>{t("No tracklist available")}</p>
+                                        )}
                                     </div>
                                 </div>
 
-                                <button className="add-to-cart-button">{t("Add to Cart")}</button>
+                                <button className="add-to-cart-button">{t("Cart")}</button>
                             </div>
                         </div>
                     </div>
                 </div>
             )}
+
 
 
             <footer className="bg-dark text-white py-4">

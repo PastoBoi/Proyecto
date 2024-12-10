@@ -3,14 +3,17 @@ import path from 'path';
 import bcrypt from 'bcryptjs';
 
 export async function POST(req) {
-  const { username, password } = await req.json();
-  
+  const { usernameOrEmail, password } = await req.json();
+
   // Ruta al archivo JSON
   const filePath = path.join(process.cwd(), 'data', 'users.json');
   const users = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
 
-  // Buscar el usuario en el archivo JSON
-  const user = users.find(user => user.username === username);
+  // Buscar al usuario por nombre de usuario o correo electrónico
+  const user = users.find(
+    user => user.username === usernameOrEmail || user.email === usernameOrEmail
+  );
+
   if (!user) {
     return new Response('Invalid credentials', { status: 401 });
   }
