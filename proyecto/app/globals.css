@@ -783,3 +783,135 @@ input[type="search"] {
   max-width: 300px;
   align-self: center;
 }
+
+/* Estilo general de la página de configuración */
+/* Página de configuración */
+.config-page {
+  background-image: url('/path-to-your-background-image.jpg'); /* Cambia la ruta */
+  background-size: cover;
+  background-position: center;
+  color: white;
+  text-align: center;
+  padding: 2rem 1rem;
+  border-radius: 10px;
+  margin: 2rem auto;
+  max-width: 900px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Encabezado de la configuración */
+.config-header {
+  margin-bottom: 1.5rem;
+}
+
+.config-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #00ffcc;
+}
+
+.config-description {
+  font-size: 1.2rem;
+  color: #dddddd;
+}
+
+/* Botón de selección de idioma */
+.btn-language {
+  font-size: 1.2rem;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #00ffcc;
+  color: #222;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.btn-language:hover {
+  background-color: #00cc99;
+}
+
+.btn-language.active {
+  background-color: #28a745;
+  color: white;
+}
+
+.btn-language.active:hover {
+  background-color: #218838;
+}
+
+.auth-page {
+  background-image: url('/path-to-your-background-image.jpg'); /* Cambiar la ruta */
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.form-box {
+  background: rgba(0, 0, 0, 0.7);
+  padding: 2rem;
+  border-radius: 10px;
+  max-width: 400px;
+  width: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.form-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  color: #00ffcc;
+  text-align: center;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.8rem;
+  margin-top: 0.5rem;
+  border: none;
+  border-radius: 5px;
+  background: #222;
+  color: #fff;
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 5px;
+  background: #00ffcc;
+  color: #222;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+.btn-submit:hover {
+  background: #00cc99;
+}
+
+.auth-footer {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.auth-link {
+  color: #00ffcc;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.auth-link:hover {
+  color: #00cc99;
+}

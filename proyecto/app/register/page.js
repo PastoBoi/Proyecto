@@ -31,7 +31,7 @@ export default function RegisterPage() {
 
     if (response.ok) {
       alert(t("registerSuccess"));
-      router.push("/login");
+      router.push(`/login?lang=${language}`); // Redirigir manteniendo el idioma
     } else if (response.status === 409) {
       alert(t("userExists"));
     } else {
@@ -39,49 +39,65 @@ export default function RegisterPage() {
     }
   };
 
+  const goToLogin = () => {
+    router.push(`/login?lang=${language}`); // Navegar a Login manteniendo el idioma
+  };
+
   return (
-    <div className="register-container">
+    <div className="auth-page">
       <div className="form-box">
-        <h2 className="form-title">{t("registerPageTitle")}</h2>
+        <h2 className="form-title">{t("title")}</h2>
         <form onSubmit={handleRegister}>
-          <label>
+          <label className="form-label">
             {t("username")}
             <input
+              className="form-input"
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               required
             />
           </label>
-          <label>
+          <label className="form-label">
             {t("email")}
             <input
+              className="form-input"
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
             />
           </label>
-          <label>
+          <label className="form-label">
             {t("password")}
             <input
+              className="form-input"
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
             />
           </label>
-          <label>
+          <label className="form-label">
             {t("confirmPassword")}
             <input
+              className="form-input"
               type="password"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               required
             />
           </label>
-          <button type="submit">{t("registerButton")}</button>
+          <button className="btn-submit" type="submit">
+            {t("registerButton")}
+          </button>
         </form>
+        <p className="auth-footer">
+          {t("alreadyHaveAccount")}{" "}
+          <a onClick={goToLogin} className="auth-link">
+            {t("loginHere")}
+          </a>
+        </p>
       </div>
     </div>
   );

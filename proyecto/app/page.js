@@ -107,7 +107,7 @@ export default function HomePage() {
         {/* Productos destacados */}
         <section className="promoted-products py-5">
           <div className="container2">
-            <h3 className="Promos">{t("PromotedProducts")}</h3>
+            <h3 className="Promos">{t("PromotedDisks")}</h3>
             <div className="Albumes d-flex flex-wrap justify-content-around">
               {filteredProducts.length > 0 ? (
                 filteredProducts.map((product, index) => (
