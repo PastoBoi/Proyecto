@@ -490,11 +490,24 @@ a {
 
 @media screen and (max-width: 768px) {
   main {
-    margin-top: 60px;
+    margin-top: 70px;
   }
   img {
     width: 180px; /* Establecer el ancho deseado */
     height: auto; /* Mantener la proporción de aspecto */
+  }
+  .input-group{
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    min-width: 500px;
+    background-color: #202c24; 
+    border-radius: 10px; 
+    gap: 10px;
+    border: 2px solid #36453a; /* Cambia el grosor, color y estilo según prefieras */
+  }
+  .form-control{
+    min-width: 75%;
   }
 }
 
@@ -581,6 +594,7 @@ input{
   color: black;
   font-weight: bolder;
   border-radius: 10px;
+  min-width: 100px;
   width: 100px;
   height: 45px;
 }
@@ -914,4 +928,21 @@ input[type="search"] {
 
 .auth-link:hover {
   color: #00cc99;
+}
+
+.ri-filter-2-line {
+  position: absolute;
+  right: 125px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #ffffff;
+}
+
+.ri-filter-2-line:hover {
+  color: #9e9e9e;
+}
+
+.filter{
+  display: flex;
+  flex-direction: column;
 }

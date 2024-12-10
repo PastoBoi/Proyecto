@@ -66,25 +66,25 @@ export default function HomePage() {
         {/* Header con imagen de fondo */}
         <section className="text-center text-white d-flex align-items-center">
           <div className="container bg-imagen">
-            <h2 className="display-4 outlined-text">{t("Slogan")}</h2>
-            <p className="lead outlined-subtext">{t("SloganFoot")}</p>
-
+            <div className="solo-escritorio">
+                <h2 className="display-4 outlined-text">{t("Slogan")}</h2>
+                <p className="lead outlined-subtext">{t("SloganFoot")}</p>
+            </div>
             {/* Barra de búsqueda */}
-            <form onSubmit={handleSearch}>
+            <form action="/Search_results" method="get">
               <div className="input-group w-50 p-2">
-                <input
-                  className="form-control"
-                  type="text"
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  placeholder={t("SearchPlaceholder")}
-                  aria-label={t("Buscar productos")}
-                />
-                <button type="submit" className="boton-busc">
-                  {t("SearchButton")}
-                </button>
+                  <input 
+                      className="form-control"
+                      type="text" 
+                      name="query" 
+                      placeholder={t("SearchPlaceholder")}
+                      aria-label={t("Buscar discos")}
+                  />
+                  <button type="submit" className="boton-busc">
+                      {t("SearchButton")}
+                  </button>
               </div>
-            </form>
+          </form>
 
             {/* Botones de login y registro */}
             <div className="mt-4">

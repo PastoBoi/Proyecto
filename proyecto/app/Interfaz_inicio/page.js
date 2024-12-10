@@ -3,12 +3,14 @@
 import { useState, useEffect, useContext } from "react";
 import { LanguageContext } from "../Componentes/languageContext";
 import translations from "../Componentes/traducción";
+import { CartContext } from "./carrito/CartContext";
 
 export default function InterfazPage() {
     const { language } = useContext(LanguageContext); // Obtener idioma desde el contexto
     const t = (key) => translations[language]?.[key] || key;
 
     // Estados para los productos, búsqueda y pop-up
+    const { addToCart } = useContext(CartContext);
     const [products, setProducts] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
@@ -49,9 +51,15 @@ export default function InterfazPage() {
         setSelectedProduct(null);
     };
 
+    const handleAddToCart = (product) => {
+        addToCart(product);
+        // Opcional: Mostrar una notificación o feedback al usuario
+        alert("${product.name} ha sido añadido al carrito.");
+      };
+
     return (
         <>
-            <main>
+                <main>
                 <section className="text-center text-white d-flex align-items-center">
                     <div className="container bg-imagen">
                         <div className="solo-escritorio">
@@ -131,34 +139,27 @@ export default function InterfazPage() {
                             {/* Información del producto a la derecha */}
                             <div className="popup-info">
                                 <h1 className="popup-title">{selectedProduct.name}</h1>
-                                {/* Mostrar géneros unidos por "/" */}
-                                <p className="popup-genres">
-                                    {selectedProduct.genre?.join(" / ") || t("No genre available")}
-                                </p>
-
+                                <p className="popup-genres">{selectedProduct.genre1} / {selectedProduct.genre2}</p>
+                                
                                 {/* Tracklist */}
                                 <div className="tracklist-container">
                                     <h3 className="tracklist-header">{t("tracklist")}:</h3>
                                     <div className="tracklist-box">
-                                        {Array.isArray(selectedProduct.tracklist) && selectedProduct.tracklist.length > 0 ? (
-                                            selectedProduct.tracklist.map((track, index) => (
-                                                <p key={index} className="tracklist-item">
-                                                    {index + 1}. {track}
-                                                </p>
-                                            ))
-                                        ) : (
-                                            <p>{t("No tracklist available")}</p>
-                                        )}
+                                        {selectedProduct.tracklist.map((track, index) => (
+                                            <p key={index} className="tracklist-item">
+                                                {index + 1}. {track}
+                                            </p>
+                                        ))}
                                     </div>
                                 </div>
 
-                                <button className="add-to-cart-button">{t("Cart")}</button>
+                                <button className="add-to-cart-button" onClick={() => handleAddToCart(selectedProduct)}
+                  >{t("Cart")}</button>
                             </div>
                         </div>
                     </div>
                 </div>
             )}
-
 
 
             <footer className="bg-dark text-white py-4">
