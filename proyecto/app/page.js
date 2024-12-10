@@ -4,6 +4,7 @@ import { useState, useEffect, useContext } from "react";
 import { useRouter } from "next/navigation";
 import { LanguageContext } from "./Componentes/languageContext";
 import translations from "./Componentes/traducción";
+import { CartContext } from "./carrito/CartContext";
 
 export default function HomePage() {
   const { language } = useContext(LanguageContext);
@@ -11,6 +12,7 @@ export default function HomePage() {
   const router = useRouter();
 
   // Estados para productos, búsqueda y pop-up
+  const { addToCart } = useContext(CartContext);
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -58,6 +60,12 @@ export default function HomePage() {
 
   const handleRegisterRedirect = () => {
     router.push("/register");
+  };
+
+  const handleAddToCart = (product) => {
+    addToCart(product);
+    // Opcional: Mostrar una notificación o feedback al usuario
+    alert("${product.name} ha sido añadido al carrito.");
   };
 
   return (
@@ -112,22 +120,25 @@ export default function HomePage() {
               {filteredProducts.length > 0 ? (
                 filteredProducts.map((product, index) => (
                   <div
-                    key={index}
-                    className="product-item"
-                    onClick={() => handleProductClick(product)}
-                    style={{ cursor: "pointer" }}
+                      key={index}
+                      className="product-item"
+                      onClick={() => handleProductClick(product)}
+                      style={{ cursor: "pointer" }}
                   >
-                    <img
-                      src={product.image}
-                      alt={product.name}
-                      className="product-image rounded"
-                    />
-                    <div className="Name-price d-flex flex-row justify-content-between">
-                      <div className="d-flex flex-column">
-                        <div className="product-name mt-2">{product.name}</div>
-                        <div className="product-price">{product.price}</div>
+                      <img
+                          src={product.image}
+                          alt={product.name}
+                          className="product-image rounded"
+                      />
+                      <div className="Name-price d-flex flex-row justify-content-between">
+                          <div className="d-flex flex-column">
+                              <div className="product-name mt-2">{product.name}</div>
+                              <div className="product-price">{product.price}</div>
+                          </div>
+                          <div className="add-button">
+                              <i className="ri-add-box-line"></i>
+                          </div>
                       </div>
-                    </div>
                   </div>
                 ))
               ) : (
@@ -178,8 +189,8 @@ export default function HomePage() {
                     )}
                   </div>
                 </div>
-
-                <button className="add-to-cart-button">{t("Cart")}</button>
+                <button className="add-to-cart-button" onClick={() => handleAddToCart(selectedProduct)}
+                  >{t("Cart")}</button>
               </div>
             </div>
           </div>

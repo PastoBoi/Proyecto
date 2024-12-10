@@ -3,7 +3,7 @@
 import { useState, useEffect, useContext } from "react";
 import { LanguageContext } from "../Componentes/languageContext";
 import translations from "../Componentes/traducción";
-import { CartContext } from "./carrito/CartContext";
+import { CartContext } from "../carrito/CartContext";
 
 export default function InterfazPage() {
     const { language } = useContext(LanguageContext); // Obtener idioma desde el contexto
