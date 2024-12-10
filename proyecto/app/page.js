@@ -65,7 +65,7 @@ export default function HomePage() {
   const handleAddToCart = (product) => {
     addToCart(product);
     // Opcional: Mostrar una notificación o feedback al usuario
-    alert("${product.name} ha sido añadido al carrito.");
+    alert(`${product.name} ha sido añadido al carrito.`);
   };
 
   return (
