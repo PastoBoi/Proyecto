@@ -1,6 +1,7 @@
 [
     {
-        "name": "Hisohiso Banashi  -  Zutomayo",
+        "album": "Hisohiso Banashi",
+        "author": "Zutomayo",
         "price": "$10.00",
         "genre": ["ROCK", "J-POP"],
         "tracklist": [
@@ -22,7 +23,8 @@
         "image": "https://cdns-images.dzcdn.net/images/cover/29ecd861ce6f102c6545e13a1248edb7/0x1900-000000-80-0-0.jpg"
     },
     {
-        "name": "Otogi  -  Eve",
+        "album": "Otogi",
+        "author": "Eve",
         "price": "$10.00",
         "genre": ["ROCK", "J-POP"],
         "tracklist": [
@@ -42,7 +44,8 @@
         "image": "https://cdns-images.dzcdn.net/images/cover/e62edb9b94f7bcf0d7770c73d97562f6/0x1900-000000-80-0-0.jpg"
     },
     {
-        "name": "Kyogen - Ado",
+        "album": "Kyogen",
+        "author": "Ado",
         "price": "$10.00",
         "genre": ["ROCK", "J-POP"],
         "tracklist": [
@@ -61,7 +64,8 @@
         "image": "https://e-cdns-images.dzcdn.net/images/cover/d00ed424dd8927d561034e6d89cb05b5/500x500-000000-80-0-0.jpg"
     },
     {
-        "name": "Miracle Milk - Mili",
+        "album": "Miracle Milk",
+        "author": "Mili",
         "price": "$10.00",
         "genre": ["POP", "J-POP"],
         "tracklist": [
@@ -81,7 +85,8 @@
         "image": "https://e-cdns-images.dzcdn.net/images/cover/1285d6765ae590bd717b886bb8b8dbd8/500x500-000000-80-0-0.jpg"
     },
     {
-        "name": "Pure - Co Shiu Ne",
+        "album": "Pure",
+        "author": "Co Shiu Ne",
         "price": "$10.00",
         "genre": ["POP"],
         "tracklist": [
@@ -100,7 +105,8 @@
         "image": "https://e-cdns-images.dzcdn.net/images/cover/43f9366c184d81b0fa1eaf86e39587b8/500x500-000000-80-0-0.jpg"
     },
     {
-        "name": "Rokotsu - Syudou",
+        "album": "Rokotsu",
+        "author": "Syudou",
         "price": "$10.00",
         "genre": ["ROCK", "J-POP"],
         "tracklist": [
@@ -119,9 +125,10 @@
         "image": "https://e-cdns-images.dzcdn.net/images/cover/a114e2133cc6dcbd1d19857b61e4a099/500x500-000000-80-0-0.jpg"
     },
     {
-        "name": "LCD Soundsystem - LCD Soundsystem",
+        "album": "LCD Soundsystem",
+        "author": "LCD Soundsystem",
         "price": "$10.00",
-        "genre": ["ROCK","ELECTRONICA"],
+        "genre": ["ROCK", "ELECTRONICA"],
         "tracklist": [
             "Daft Punk is Playing at My House",
             "Too Much Love",
@@ -133,15 +140,15 @@
             "Disco Infiltrator",
             "Great Release",
             "Yr City's a Sucker"
-
         ],
         "link": "https://example.com/product1",
         "image": "https://upload.wikimedia.org/wikipedia/en/7/74/Afc_lcd_LCDSoundsystem.gif"
     },
     {
-        "name": "American Dream - LCD Soundsystem",
+        "album": "American Dream",
+        "author": "LCD Soundsystem",
         "price": "$12.00",
-        "genre": ["ROCK","ELECTRONICA"],
+        "genre": ["ROCK", "ELECTRONICA"],
         "tracklist": [
             "oh baby",
             "other voices",
@@ -158,9 +165,10 @@
         "image": "https://upload.wikimedia.org/wikipedia/en/thumb/4/4f/LCD_Soundsystem_-_American_Dream.png/220px-LCD_Soundsystem_-_American_Dream.png"
     },
     {
-        "name": "Remain in Light - Talking Heads",
+        "album": "Remain in Light",
+        "author": "Talking Heads",
         "price": "$10.00",
-        "genre": ["ROCK","NEW WAVE"],
+        "genre": ["ROCK", "NEW WAVE"],
         "tracklist": [
             "Born Under Punches (The Heat Goes On)",
             "Crosseyed and Painless",
@@ -172,6 +180,6 @@
             "The Overload"
         ],
         "link": "https://example.com/product1",
-        "image": "https://upload.wikimedia.org/wikipedia/en/thumb/2/2d/TalkingHeadsRemaininLight.jpg/220px-TalkingHeadsRemaininLight.jpg"       
+        "image": "https://upload.wikimedia.org/wikipedia/en/thumb/2/2d/TalkingHeadsRemaininLight.jpg/220px-TalkingHeadsRemaininLight.jpg"
     }
 ]
