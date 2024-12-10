@@ -1,38 +1,27 @@
 "use client";
 
 import { useRouter } from 'next/navigation';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { LanguageContext } from '../Componentes/languageContext';
 import translations from '../Componentes/traducción';
+import { AuthContext } from '../Componentes/authContext';
 
 export default function Header() {
   const router = useRouter();
   const { language } = useContext(LanguageContext);
+  const { user, logout } = useContext(AuthContext);
+  const t = (key) => translations[language][key] || key;
 
-  // Simulación de usuario autenticado
-  const isAuthenticated = false; // Cambiar a true si el usuario está autenticado
+  const [profileMenuOpen, setProfileMenuOpen] = useState(false);
 
-  // Redirigir a la página principal
-  const handleHomeRedirect = () => {
-    router.push('/');
-  };
+  // Redirecciones
+  const handleHomeRedirect = () => router.push('/');
+  const handleCartRedirect = () => router.push(user ? '/carrito' : '/login');
+  const handleSettingsRedirect = () => router.push('/configuracion');
+  const handleLoginRedirect = () => router.push('/login');
 
-  // Redirigir al carrito o login
-  const handleCartRedirect = () => {
-    if (isAuthenticated) {
-      router.push('/carrito');
-    } else {
-      router.push('/login'); // Redirigir a login si no está autenticado
-    }
-  };
-
-  // Redirigir a la página de configuración
-  const handleSettingsRedirect = () => {
-    router.push('/configuracion');
-  };
-
-  const t = (key) => {
-    return translations[language][key] || key;
+  const toggleProfileMenu = () => {
+    setProfileMenuOpen(!profileMenuOpen);
   };
 
   return (
@@ -52,24 +41,13 @@ export default function Header() {
 
         <div className="nav__menu" id="nav-menu">
           <ul className="nav__list">
-            {/* Nuevo discos */}
-            <li>
-              <a href="#" className="nav__link">{t('newDiscs')}</a>
-            </li>
-
-            {/* Promociones */}
-            <li>
-              <a href="#" className="nav__link">{t('promotions')}</a>
-            </li>
-
-            {/* Redirección al carrito */}
+            <li><a href="#" className="nav__link">{t('newDiscs')}</a></li>
+            <li><a href="#" className="nav__link">{t('promotions')}</a></li>
             <li>
               <a href="#" className="nav__link" onClick={handleCartRedirect}>
-                <i className="ri-shopping-cart-line me-1"></i>{t('cart')}
+                <i className="ri-shopping-cart-line me-1"></i> {t('cart')}
               </a>
             </li>
-
-            {/* Géneros desplegable */}
             <li className="dropdown__item">
               <div className="nav__link">
                 {t('genres')} <i className="ri-arrow-down-s-line dropdown__arrow"></i>
@@ -83,25 +61,37 @@ export default function Header() {
                 <li><a href="#" className="dropdown__link">Country</a></li>
                 <li><a href="#" className="dropdown__link">Rock</a></li>
                 <li><a href="#" className="dropdown__link">Otros</a></li>
-
-                <li className="dropdown__subitem">
-                  <div className="dropdown__link">
-                    <i className="ri-bar-chart-line"></i> Reports <i className="ri-add-line dropdown__add"></i>
-                  </div>
-                  <ul className="dropdown__submenu">
-                    <li><a href="#" className="dropdown__sublink"><i className="ri-file-list-line"></i> Documents</a></li>
-                    <li><a href="#" className="dropdown__sublink"><i className="ri-cash-line"></i> Payments</a></li>
-                    <li><a href="#" className="dropdown__sublink"><i className="ri-refund-2-line"></i> Refunds</a></li>
-                  </ul>
-                </li>
               </ul>
             </li>
-
-            {/* Configuración del idioma */}
             <li>
               <a href="#" className="nav__link" onClick={handleSettingsRedirect}>
                 <i className="ri-settings-line"></i> {t('settings')}
               </a>
+            </li>
+
+            {/* Botón de inicio de sesión o perfil */}
+            <li className="profile-section">
+              {!user ? (
+                <button
+                  className="nav__login-button"
+                  onClick={handleLoginRedirect}
+                >
+                  {t('login')}
+                </button>
+              ) : (
+                <div className="nav__profile" onClick={toggleProfileMenu}>
+                  <i className="ri-user-line nav__profile-icon"></i>
+                  {profileMenuOpen && (
+                    <ul className="profile-dropdown">
+                      <li className="profile-dropdown-item">
+                        <a href="#" onClick={logout}>
+                          {t('logout')}
+                        </a>
+                      </li>
+                    </ul>
+                  )}
+                </div>
+              )}
             </li>
           </ul>
         </div>

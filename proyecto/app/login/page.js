@@ -1,32 +1,41 @@
 "use client";
 
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { LanguageContext } from "../Componentes/languageContext";
 import translations from "../Componentes/traducción";
+import { AuthContext } from "../Componentes/authContext";
 
 export default function LoginPage() {
   const [identifier, setIdentifier] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
   const { language } = useContext(LanguageContext);
+  const { login } = useContext(AuthContext); // Obtener la función login desde el contexto
 
   const t = (key) => translations[language][key] || key;
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    const response = await fetch("/api/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ identifier, password }),
-    });
+    try {
+      const response = await fetch("/api/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ identifier, password }),
+      });
 
-    if (response.ok) {
-      alert(t("loginSuccess"));
-      router.push(`/?lang=${language}`); // Redirigir manteniendo el idioma
-    } else {
+      if (response.ok) {
+        const userData = await response.json();
+        login(userData); // Guardamos al usuario en el contexto
+        alert(t("loginSuccess"));
+        router.push(`/?lang=${language}`); // Redirigir manteniendo el idioma
+      } else {
+        alert(t("loginError"));
+      }
+    } catch (error) {
+      console.error("Error durante el login:", error);
       alert(t("loginError"));
     }
   };
