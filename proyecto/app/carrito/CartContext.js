@@ -14,9 +14,6 @@ export const CartProvider = ({ children }) => {
     const storedCart = localStorage.getItem('cart');
     if (storedCart) {
       setCart(JSON.parse(storedCart));
-      console.log("Carrito cargado desde localStorage:", JSON.parse(storedCart));
-    } else {
-      console.log("No se encontró carrito en localStorage.");
     }
   }, []);
 
@@ -30,18 +27,13 @@ export const CartProvider = ({ children }) => {
     setCart((prevCart) => {
       const existingProduct = prevCart.find((item) => item.name === product.name);
       if (existingProduct) {
-        const updatedCart = prevCart.map((item) =>
+        return prevCart.map((item) =>
           item.name === product.name
             ? { ...item, quantity: item.quantity + 1 }
             : item
         );
-        console.log("Producto existente. Carrito actualizado:", updatedCart);
-        return updatedCart;
       } else {
-        // Si el producto no está en el carrito, agrégalo con cantidad 1
-        const newCart = [...prevCart, { ...product, quantity: 1 }];
-        console.log("Producto añadido al carrito:", newCart);
-        return newCart;
+        return [...prevCart, { ...product, quantity: 1 }];
       }
     });
   };
