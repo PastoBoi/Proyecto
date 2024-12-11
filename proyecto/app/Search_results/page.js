@@ -123,9 +123,14 @@ export default function SearchResults() {
                 item.author?.toLowerCase().includes(searchQuery.toLowerCase()) // Only search by artist name
             );
         }
-        if (filters.includes("Only album")) { // Check if "Only album" filter is active
+        if (filters.includes("Only album")) {
             filtered = filtered.filter(item =>
-                item.album?.toLowerCase().includes(searchQuery.toLowerCase()) // Only search by album name
+                item.album?.toLowerCase().includes(searchQuery.toLowerCase())
+            );
+        }
+        if (filters.includes("Only songs")) {
+            filtered = filtered.filter(item =>
+                item.tracklist?.some(track => track.toLowerCase().includes(searchQuery.toLowerCase()))
             );
         }
     
@@ -189,6 +194,12 @@ export default function SearchResults() {
                                         onClick={() => applyFilter("Only album")}
                                     >
                                         {t("Album")}
+                                    </button>
+                                    <button
+                                        className="dropdown-item"
+                                        onClick={() => applyFilter("Only songs")}
+                                    >
+                                        {t("Songs")}
                                     </button>
                                     <button
                                         className="dropdown-item"
