@@ -61,7 +61,7 @@ function CartPage() {
                     </thead>
                     <tbody className="bg-white divide-y divide-gray-200">
                       {cart.map((item) => (
-                        <tr key={item.id}>
+                        <tr key={item.name}>
                           <td className="px-6 py-4 whitespace-nowrap flex items-center">
                             <img
                               src={item.image}
@@ -83,7 +83,7 @@ function CartPage() {
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap">
                             <button
-                              onClick={() => removeFromCart(item.id)}
+                              onClick={() => removeFromCart(item.name)}
                               className="text-red-600 hover:text-red-900"
                             >
                               {t("remove")}

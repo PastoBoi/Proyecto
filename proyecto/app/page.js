@@ -5,20 +5,20 @@ import { useRouter } from "next/navigation";
 import { LanguageContext } from "./Componentes/languageContext";
 import translations from "./Componentes/traducción";
 import { CartContext } from "./carrito/CartContext";
+import { AuthContext } from "./Componentes/authContext";
 
 export default function HomePage() {
   const { language } = useContext(LanguageContext);
+  const { user, logout } = useContext(AuthContext); // Obtener el usuario y la función logout
   const t = (key) => translations[language]?.[key] || key;
   const router = useRouter();
 
-  // Estados para productos, búsqueda y pop-up
   const { addToCart } = useContext(CartContext);
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedProduct, setSelectedProduct] = useState(null);
 
-  // Cargar productos desde la API
   useEffect(() => {
     async function fetchProducts() {
       try {
@@ -34,7 +34,6 @@ export default function HomePage() {
     fetchProducts();
   }, []);
 
-  // Manejar búsqueda
   const handleSearch = (e) => {
     e.preventDefault();
     const filtered = products.filter((product) =>
@@ -43,17 +42,14 @@ export default function HomePage() {
     setFilteredProducts(filtered);
   };
 
-  // Manejar clic en un producto
   const handleProductClick = (product) => {
     setSelectedProduct(product);
   };
 
-  // Cerrar el pop-up
   const handleClosePopup = () => {
     setSelectedProduct(null);
   };
 
-  // Navegar al login o registro
   const handleLoginRedirect = () => {
     router.push("/login");
   };
@@ -64,55 +60,54 @@ export default function HomePage() {
 
   const handleAddToCart = (product) => {
     addToCart(product);
-    // Opcional: Mostrar una notificación o feedback al usuario
     alert(`${product.name} ha sido añadido al carrito.`);
   };
 
   return (
     <>
       <main>
-        {/* Header con imagen de fondo */}
         <section className="text-center text-white d-flex align-items-center">
           <div className="container bg-imagen">
             <div className="solo-escritorio">
-                <h2 className="display-4 outlined-text">{t("Slogan")}</h2>
-                <p className="lead outlined-subtext">{t("SloganFoot")}</p>
+              <h2 className="display-4 outlined-text">{t("Slogan")}</h2>
+              <p className="lead outlined-subtext">{t("SloganFoot")}</p>
             </div>
-            {/* Barra de búsqueda */}
             <form action="/Search_results" method="get">
               <div className="input-group w-50 p-2">
-                  <input 
-                      className="form-control"
-                      type="text" 
-                      name="query" 
-                      placeholder={t("SearchPlaceholder")}
-                      aria-label={t("Buscar discos")}
-                  />
-                  <button type="submit" className="boton-busc">
-                      {t("SearchButton")}
-                  </button>
+                <input 
+                  className="form-control"
+                  type="text" 
+                  name="query" 
+                  placeholder={t("SearchPlaceholder")}
+                  aria-label={t("Buscar discos")}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  value={searchTerm}
+                />
+                <button type="submit" className="boton-busc">
+                  {t("SearchButton")}
+                </button>
               </div>
-          </form>
+            </form>
 
-            {/* Botones de login y registro */}
             <div className="mt-4">
-              <button
-                onClick={handleLoginRedirect}
-                className="Log-user py-2 px-4 rounded"
-              >
-                {t("login")}
-              </button>
-              <button
-                onClick={handleRegisterRedirect}
-                className="Create-user py-2 px-4 rounded"
-              >
-                {t("createUser")}
-              </button>
+              {!user ? (
+                <>
+                  <button onClick={handleLoginRedirect} className="Log-user py-2 px-4 rounded">
+                    {t("login")}
+                  </button>
+                  <button onClick={handleRegisterRedirect} className="Create-user py-2 px-4 rounded">
+                    {t("createUser")}
+                  </button>
+                </>
+              ) : (
+                <button onClick={logout} className="Log-user py-2 px-4 rounded">
+                  {t("logout")}
+                </button>
+              )}
             </div>
           </div>
         </section>
 
-        {/* Productos destacados */}
         <section className="promoted-products py-5">
           <div className="container2">
             <h3 className="Promos">{t("PromotedDisks")}</h3>
@@ -120,25 +115,25 @@ export default function HomePage() {
               {filteredProducts.length > 0 ? (
                 filteredProducts.map((product, index) => (
                   <div
-                      key={index}
-                      className="product-item"
-                      onClick={() => handleProductClick(product)}
-                      style={{ cursor: "pointer" }}
+                    key={index}
+                    className="product-item"
+                    onClick={() => handleProductClick(product)}
+                    style={{ cursor: "pointer" }}
                   >
-                      <img
-                          src={product.image}
-                          alt={product.name}
-                          className="product-image rounded"
-                      />
-                      <div className="Name-price d-flex flex-row justify-content-between">
-                          <div className="d-flex flex-column">
-                              <div className="product-name mt-2">{product.name}</div>
-                              <div className="product-price">{product.price}</div>
-                          </div>
-                          <div className="add-button">
-                              <i className="ri-add-box-line"></i>
-                          </div>
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className="product-image rounded"
+                    />
+                    <div className="Name-price d-flex flex-row justify-content-between">
+                      <div className="d-flex flex-column">
+                        <div className="product-name mt-2">{product.name}</div>
+                        <div className="product-price">{product.price}</div>
                       </div>
+                      <div className="add-button">
+                        <i className="ri-add-box-line"></i>
+                      </div>
+                    </div>
                   </div>
                 ))
               ) : (
@@ -149,31 +144,19 @@ export default function HomePage() {
         </section>
       </main>
 
-      {/* Pop-Up para Detalles del Producto */}
       {selectedProduct && (
         <div className="product-popup">
           <div className="popup-content text-black">
-            <button className="close-button" onClick={handleClosePopup}>
-              &times;
-            </button>
+            <button className="close-button" onClick={handleClosePopup}>&times;</button>
             <div className="popup-layout">
-              {/* Imagen grande a la izquierda */}
               <div className="popup-image-container">
-                <img
-                  src={selectedProduct.image}
-                  alt={selectedProduct.name}
-                  className="popup-image"
-                />
+                <img src={selectedProduct.image} alt={selectedProduct.name} className="popup-image"/>
               </div>
-              {/* Información del producto a la derecha */}
               <div className="popup-info">
                 <h1 className="popup-title">{selectedProduct.name}</h1>
-                {/* Mostrar géneros unidos por "/" */}
                 <p className="popup-genres">
                   {selectedProduct.genre?.join(" / ")}
                 </p>
-
-                {/* Tracklist */}
                 <div className="tracklist-container">
                   <h3 className="tracklist-header">{t("tracklist")}:</h3>
                   <div className="tracklist-box">
@@ -189,20 +172,14 @@ export default function HomePage() {
                     )}
                   </div>
                 </div>
-                <button className="add-to-cart-button" onClick={() => handleAddToCart(selectedProduct)}
-                  >{t("Cart")}</button>
+                <button className="add-to-cart-button" onClick={() => handleAddToCart(selectedProduct)}>
+                  {t("AddToCart")}
+                </button>
               </div>
             </div>
           </div>
         </div>
       )}
-
-      {/* Footer */}
-      <footer className="bg-dark text-white py-4">
-        <div className="container text-center">
-          <p>&copy; 2024 Sustainable Sound. {t("Todos los derechos reservados")}.</p>
-        </div>
-      </footer>
     </>
   );
 }
