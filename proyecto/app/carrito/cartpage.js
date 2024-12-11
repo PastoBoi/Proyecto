@@ -1,8 +1,9 @@
-"use client";
+// proyecto/app/carrito/cartpage.js
 
-import React, { useContext } from 'react'; // Ajusta la ruta según tu estructura de carpetas
+"use client";
+import React, { useContext } from 'react';
 import { CartContext } from './CartContext';
-import { LanguageContext } from '../Componentes/languageContext'; // Si usas LanguageContext
+import { LanguageContext } from '../Componentes/languageContext';
 import translations from '../Componentes/traducción';
 import { useRouter } from "next/navigation";
 
@@ -13,8 +14,9 @@ function CartPage() {
 
   const t = (key) => translations[language]?.[key] || key;
 
+  // Calcular el total del carrito
   const totalPrice = cart.reduce(
-    (acc, item) => acc + item.price * item.quantity,
+    (acc, item) => acc + item.price * item.quantity, // Multiplicamos el precio por la cantidad
     0
   );
 
@@ -58,10 +60,10 @@ function CartPage() {
                               alt={item.album}
                               className="w-16 h-16 object-cover rounded mr-4"
                             />
-                              {item.album}
+                            {item.album}
                           </td>
-                          <td >
-                            ${item.price.toFixed(2)}
+                          <td>
+                            ${isNaN(item.price) ? 'Invalid price' : item.price.toFixed(2)}
                           </td>
                           <td>
                             {item.quantity}

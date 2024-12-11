@@ -1,3 +1,5 @@
+// proyecto/app/carrito/page.js
+
 "use client";
 import CartPage from './cartpage';
 
