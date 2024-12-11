@@ -49,7 +49,7 @@ function ChatGPT() {
       <h1 className="text-2xl font-bold mb-4">ChatGPT-4 con Next.js</h1>
       <form onSubmit={handleSubmit} className="mb-4">
         <textarea
-          className="w-full p-2 border border-gray-300 rounded"
+          className="chat-form w-full p-2 border border-gray-300 rounded"
           rows="4"
           placeholder="Escribe tu pregunta aquí..."
           value={prompt}
@@ -71,8 +71,8 @@ function ChatGPT() {
       )}
 
       {response && (
-        <div className="p-4 bg-gray-100 rounded">
-          <h2 className="text-xl font-semibold mb-2">Respuesta:</h2>
+        <div className="chat-form p-4 bg-gray-100 rounded">
+          <h3 className="text-xl font-semibold mb-2">Respuesta:</h3>
           <p>{response}</p>
         </div>
       )}
