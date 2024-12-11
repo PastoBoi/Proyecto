@@ -56,11 +56,6 @@ export default function Header() {
           <ul className="nav__list">
             <li>
               <a href="#" className="nav__link">
-                {t("newDiscs")}
-              </a>
-            </li>
-            <li>
-              <a href="#" className="nav__link">
                 {t("promotions")}
               </a>
             </li>
@@ -127,7 +122,7 @@ export default function Header() {
               </a>
             </li>
 
-            <li className="profile-section">
+            <li className="nav__link profile-section">
               {!user ? (
                 <button
                   className="nav__login-button"

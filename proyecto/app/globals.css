@@ -973,10 +973,9 @@ input[type="search"] {
   flex-direction: column;
 }
 
-<<<<<<< HEAD
 .nav__login-button {
-  background-color: #007bff;
-  color: white;
+  background-color: #00ffcc;
+  color: #222;
   border: none;
   padding: 8px 16px;
   border-radius: 4px;
@@ -985,7 +984,7 @@ input[type="search"] {
 }
 
 .nav__login-button:hover {
-  background-color: #0056b3;
+  background-color: #00cc99;
 }
 
 .nav__profile {
@@ -1017,7 +1016,7 @@ input[type="search"] {
 .profile-dropdown-item:hover {
   background-color: #f5f5f5;
 }
-=======
+
 .active-filters {
   display: flex;
   flex-wrap: wrap;
