@@ -125,7 +125,7 @@ export default function SearchResults() {
         }
         if (filters.includes("Only album")) {
             filtered = filtered.filter(item =>
-                item.album?.toLowerCase().includes(searchQuery.toLowerCase())
+                item.name?.toLowerCase().includes(searchQuery.toLowerCase())
             );
         }
         if (filters.includes("Only songs")) {
@@ -201,12 +201,15 @@ export default function SearchResults() {
                                     >
                                         {t("Songs")}
                                     </button>
-                                    <button
-                                        className="dropdown-item"
-                                        onClick={toggleGenresDropdown}
-                                    >
-                                        {t("generos")}
-                                    </button>
+                                    
+                                    <div>  
+                                        <button
+                                            className="dropdown-item"
+                                            onClick={toggleGenresDropdown}
+                                        >
+                                            {t("generos")}
+                                        </button><i className="ri-arrow-right-s-line"></i>
+                                    </div>
                                         {showGenresDropdown && (
                                         <div
                                             className="dropdown-menu genres-dropdown"
@@ -245,12 +248,12 @@ export default function SearchResults() {
                                         <a href={item.link}>
                                             <img
                                                 src={item.image}
-                                                alt={item.album}
+                                                alt={item.name}
                                                 className="product-image rounded"
                                             />
                                             <div className="Name-price d-flex flex-row justify-content-between">
                                                 <div className="d-flex flex-column">
-                                                    <div className="product-name mt-2">{item.album} - {item.author}</div>
+                                                    <div className="product-name mt-2">{item.name} - {item.author}</div>
                                                     <div className="product-price">{item.price}</div>
                                                 </div>
                                                 <div className="add-button">

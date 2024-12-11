@@ -1,6 +1,6 @@
 [
     {
-        "album": "Hisohiso Banashi",
+        "name": "Hisohiso Banashi",
         "author": "Zutomayo",
         "price": "$10.00",
         "genre": ["ROCK", "J-POP"],
@@ -23,7 +23,7 @@
         "image": "https://cdns-images.dzcdn.net/images/cover/29ecd861ce6f102c6545e13a1248edb7/0x1900-000000-80-0-0.jpg"
     },
     {
-        "album": "Otogi",
+        "name": "Otogi",
         "author": "Eve",
         "price": "$10.00",
         "genre": ["ROCK", "J-POP"],
@@ -44,7 +44,7 @@
         "image": "https://cdns-images.dzcdn.net/images/cover/e62edb9b94f7bcf0d7770c73d97562f6/0x1900-000000-80-0-0.jpg"
     },
     {
-        "album": "Kyogen",
+        "name": "Kyogen",
         "author": "Ado",
         "price": "$10.00",
         "genre": ["ROCK", "J-POP"],
@@ -64,7 +64,7 @@
         "image": "https://e-cdns-images.dzcdn.net/images/cover/d00ed424dd8927d561034e6d89cb05b5/500x500-000000-80-0-0.jpg"
     },
     {
-        "album": "Miracle Milk",
+        "name": "Miracle Milk",
         "author": "Mili",
         "price": "$10.00",
         "genre": ["POP", "J-POP"],
@@ -85,7 +85,7 @@
         "image": "https://e-cdns-images.dzcdn.net/images/cover/1285d6765ae590bd717b886bb8b8dbd8/500x500-000000-80-0-0.jpg"
     },
     {
-        "album": "Pure",
+        "name": "Pure",
         "author": "Co Shiu Ne",
         "price": "$10.00",
         "genre": ["POP"],
@@ -105,7 +105,7 @@
         "image": "https://e-cdns-images.dzcdn.net/images/cover/43f9366c184d81b0fa1eaf86e39587b8/500x500-000000-80-0-0.jpg"
     },
     {
-        "album": "Rokotsu",
+        "name": "Rokotsu",
         "author": "Syudou",
         "price": "$10.00",
         "genre": ["ROCK", "J-POP"],
@@ -125,7 +125,7 @@
         "image": "https://e-cdns-images.dzcdn.net/images/cover/a114e2133cc6dcbd1d19857b61e4a099/500x500-000000-80-0-0.jpg"
     },
     {
-        "album": "LCD Soundsystem",
+        "name": "LCD Soundsystem",
         "author": "LCD Soundsystem",
         "price": "$10.00",
         "genre": ["ROCK", "ELECTRONICA"],
@@ -145,7 +145,7 @@
         "image": "https://upload.wikimedia.org/wikipedia/en/7/74/Afc_lcd_LCDSoundsystem.gif"
     },
     {
-        "album": "American Dream",
+        "name": "American Dream",
         "author": "LCD Soundsystem",
         "price": "$12.00",
         "genre": ["ROCK", "ELECTRONICA"],
@@ -165,7 +165,7 @@
         "image": "https://upload.wikimedia.org/wikipedia/en/thumb/4/4f/LCD_Soundsystem_-_American_Dream.png/220px-LCD_Soundsystem_-_American_Dream.png"
     },
     {
-        "album": "Remain in Light",
+        "name": "Remain in Light",
         "author": "Talking Heads",
         "price": "$10.00",
         "genre": ["ROCK", "NEW WAVE"],

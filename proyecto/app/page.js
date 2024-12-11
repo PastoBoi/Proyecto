@@ -60,7 +60,7 @@ export default function HomePage() {
 
   const handleAddToCart = (product) => {
     addToCart(product);
-    alert(`${product.album} ha sido añadido al carrito.`);
+    alert(`${product.name} ha sido añadido al carrito.`);
   };
 
   return (
@@ -105,12 +105,12 @@ export default function HomePage() {
                   >
                     <img
                       src={product.image}
-                      alt={product.album}
+                      alt={product.name}
                       className="product-image rounded"
                     />
                     <div className="Name-price d-flex flex-row justify-content-between">
                       <div className="d-flex flex-column">
-                        <div className="product-name mt-2">{product.album} - {product.author}</div>
+                        <div className="product-name mt-2">{product.name} - {product.author}</div>
                         <div className="product-price">{product.price}</div>
                       </div>
                       <div className="add-button">
@@ -133,10 +133,10 @@ export default function HomePage() {
             <button className="close-button" onClick={handleClosePopup}>&times;</button>
             <div className="popup-layout">
               <div className="popup-image-container">
-                <img src={selectedProduct.image} alt={selectedProduct.album} className="popup-image"/>
+                <img src={selectedProduct.image} alt={selectedProduct.name} className="popup-image"/>
               </div>
               <div className="popup-info">
-                <h1 className="popup-title">{selectedProduct.album} - {selectedProduct.author}</h1>
+                <h1 className="popup-title">{selectedProduct.name} - {selectedProduct.author}</h1>
                 <p className="popup-genres">
                   {selectedProduct.genre?.join(" / ")}
                 </p>
