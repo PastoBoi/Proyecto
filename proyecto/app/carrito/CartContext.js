@@ -25,10 +25,10 @@ export const CartProvider = ({ children }) => {
   // Función para agregar un producto al carrito
   const addToCart = (product) => {
     setCart((prevCart) => {
-      const existingProduct = prevCart.find((item) => item.name === product.name);
+      const existingProduct = prevCart.find((item) => item.album === product.album);
       if (existingProduct) {
         return prevCart.map((item) =>
-          item.name === product.name
+          item.album === product.album
             ? { ...item, quantity: item.quantity + 1 }
             : item
         );
@@ -39,8 +39,8 @@ export const CartProvider = ({ children }) => {
   };
 
   // Función para eliminar un producto del carrito
-  const removeFromCart = (name) => {
-    setCart((prevCart) => prevCart.filter((item) => item.name !== name));
+  const removeFromCart = (album) => {
+    setCart((prevCart) => prevCart.filter((item) => item.album !== album));
   };
 
   // Función para limpiar el carrito

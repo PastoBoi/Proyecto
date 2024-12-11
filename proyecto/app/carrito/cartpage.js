@@ -51,14 +51,14 @@ function CartPage() {
                     </thead>
                     <tbody>
                       {cart.map((item) => (
-                        <tr key={item.name}>
+                        <tr key={item.album}>
                           <td>
                             <img
                               src={item.image}
-                              alt={item.name}
+                              alt={item.album}
                               className="w-16 h-16 object-cover rounded mr-4"
                             />
-                              {item.name}
+                              {item.album}
                           </td>
                           <td >
                             ${item.price.toFixed(2)}
@@ -71,7 +71,7 @@ function CartPage() {
                           </td>
                           <td>
                             <button
-                              onClick={() => removeFromCart(item.name)}
+                              onClick={() => removeFromCart(item.album)}
                             >
                               {t("remove")}
                             </button>
@@ -103,6 +103,13 @@ function CartPage() {
           </div>
         </section>
       </main>
+
+      {/* Footer */}
+      <footer className="bg-dark text-white py-4">
+        <div className="container mx-auto text-center">
+          <p>&copy; 2024 Sustainable Sound. {t("Todos_los_derechos_reservados")}.</p>
+        </div>
+      </footer>
     </>
   );
 }
