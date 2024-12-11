@@ -500,7 +500,7 @@ a {
     display: flex;
     justify-content: space-between;
     margin: auto;
-    min-width: 500px;
+    min-width: 80%;
     background-color: #202c24; 
     border-radius: 10px; 
     gap: 10px;
@@ -508,6 +508,9 @@ a {
   }
   .form-control{
     min-width: 75%;
+  }
+  .ri-filter-2-line {
+    right: 125px;
   }
 }
 
@@ -970,6 +973,7 @@ input[type="search"] {
   flex-direction: column;
 }
 
+<<<<<<< HEAD
 .nav__login-button {
   background-color: #007bff;
   color: white;
@@ -1013,3 +1017,53 @@ input[type="search"] {
 .profile-dropdown-item:hover {
   background-color: #f5f5f5;
 }
+=======
+.active-filters {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.active-filter {
+  background-color: #007bff;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin-right: 5px;
+}
+
+.active-filter button {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.genres-dropdown {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 66%; /* Position it below the main dropdown */
+  left: 100%; /* Position it to the right of the main dropdown */
+  margin-top: 0px; /* Optional: Add some space between the dropdowns */
+  background-color: #202c24;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.dropdown_menu{
+  max-width: 300px;
+  position: absolute;
+  top: 100%; /* Position it below the main element */
+  right: 90px; /* Position it 90px from the right */
+  background-color: #202c24;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+>>>>>>> 319fa1f6af51b3e8fb659d260c8f1da5f7cb3caa

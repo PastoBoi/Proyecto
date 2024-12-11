@@ -8,6 +8,8 @@ export default function SearchResults() {
     const { language } = useContext(LanguageContext); // Obtén el idioma del contexto
     const t = (key) => translations[language]?.[key] || key;
 
+    const [showGenresDropdown, setShowGenresDropdown] = useState(false);
+    const [activeFilters, setActiveFilters] = useState([]);
     const [searchQuery, setSearchQuery] = useState("");
     const [items, setItems] = useState([]);
     const [filteredItems, setFilteredItems] = useState([]);
@@ -54,7 +56,8 @@ export default function SearchResults() {
     const handleSearch = (e) => {
         e.preventDefault();
         const filtered = filterItems(items, searchQuery);
-        setFilteredItems(filtered);
+        const filteredWithActiveFilters = applyActiveFilters(filtered, activeFilters);
+        setFilteredItems(filteredWithActiveFilters);
     };
 
     const toggleDropdown = () => {
@@ -62,8 +65,73 @@ export default function SearchResults() {
     };
 
     const applyFilter = (filter) => {
-        console.log("Filtro seleccionado:", filter);
-        setShowDropdown(false); // Cierra el dropdown después de seleccionar un filtro
+        setActiveFilters(prevFilters => {
+            if (!prevFilters.includes(filter)) {
+                const updatedFilters = [...prevFilters, filter];
+                const filteredItems = applyActiveFilters(items, updatedFilters);
+                setFilteredItems(filteredItems);
+                return updatedFilters;
+            }
+            return prevFilters; // If the filter is already active, do nothing
+        });
+    };
+
+    const toggleGenresDropdown = () => {
+        setShowGenresDropdown(!showGenresDropdown);
+    };
+
+    const removeFilter = (filterToRemove) => {
+        setActiveFilters(prevFilters => {
+            const updatedFilters = prevFilters.filter(filter => filter !== filterToRemove);
+            // Re-filter items based on the updated filters
+            const filteredItems = applyActiveFilters(items, updatedFilters);
+            setFilteredItems(filteredItems);
+            return updatedFilters;
+        });
+    };
+    
+    const applyActiveFilters = (items, filters) => {
+        let filtered = items;
+    
+        if (filters.includes("Pop albums")) {
+            filtered = filtered.filter(item => 
+                item.genre?.some(g => g.toLowerCase() === "pop")
+            );
+        }
+        if (filters.includes("Rock albums")) {
+            filtered = filtered.filter(item => 
+                item.genre?.some(g => g.toLowerCase() === "rock")
+            );
+        }
+        if (filters.includes("Elec. albums")) {
+            filtered = filtered.filter(item => 
+                item.genre?.some(g => g.toLowerCase() === "electronica")
+            );
+        }
+        if (filters.includes("New W. albums")) {
+            filtered = filtered.filter(item => 
+                item.genre?.some(g => g.toLowerCase() === "new wave")
+            );
+        }
+        if (filters.includes("J-Pop albums")) {
+            filtered = filtered.filter(item => 
+                item.genre?.some(g => g.toLowerCase() === "j-pop")
+            );
+        }
+        if (filters.includes("Only author")) { // Check if "filter2" is active
+            filtered = filtered.filter(item =>
+                item.author?.toLowerCase().includes(searchQuery.toLowerCase()) // Only search by artist name
+            );
+        }
+        if (filters.includes("Only album")) { // Check if "Only album" filter is active
+            filtered = filtered.filter(item =>
+                item.album?.toLowerCase().includes(searchQuery.toLowerCase()) // Only search by album name
+            );
+        }
+    
+        // Add more filter conditions here as needed
+    
+        return filtered;
     };
 
     if (loading) {
@@ -101,37 +169,55 @@ export default function SearchResults() {
 
                             {/* Dropdown menu */}
                             {showDropdown && (
-                                <div
-                                    className="dropdown-menu filter"
-                                    style={{
-                                        position: "absolute",
-                                        top: "100%",
-                                        right: "90px",
-                                        backgroundColor: "#202c24",
-                                        borderRadius: "10px",
-                                        padding: "10px",
-                                        boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
-                                        zIndex: 1000,
-                                    }}
-                                >
+                                <div className="dropdown_menu filter">
+                                    <div className="active-filters">
+                                        {activeFilters.map((filter, index) => (
+                                            <span key={index} className="active-filter">
+                                                {filter}
+                                                <button onClick={() => removeFilter(filter)}>x</button>
+                                            </span>
+                                        ))}
+                                    </div>
                                     <button
                                         className="dropdown-item"
-                                        onClick={() => applyFilter("filter1")}
+                                        onClick={() => applyFilter("Only author")}
                                     >
-                                        {t("Filter1")}
+                                        {t("Author")}
                                     </button>
                                     <button
                                         className="dropdown-item"
-                                        onClick={() => applyFilter("filter2")}
+                                        onClick={() => applyFilter("Only album")}
                                     >
-                                        {t("Filter2")}
+                                        {t("Album")}
                                     </button>
                                     <button
                                         className="dropdown-item"
-                                        onClick={() => applyFilter("filter3")}
+                                        onClick={toggleGenresDropdown}
                                     >
-                                        {t("Filter3")}
+                                        {t("generos")}
                                     </button>
+                                        {showGenresDropdown && (
+                                        <div
+                                            className="dropdown-menu genres-dropdown"
+                                        >
+                                            <button className="dropdown-item" onClick={() => applyFilter("New W. albums")}>
+                                                {t("New wave")}
+                                            </button>
+                                            <button className="dropdown-item" onClick={() => applyFilter("Elec. albums")}>
+                                                {t("Electronica")}
+                                            </button>
+                                            <button className="dropdown-item" onClick={() => applyFilter("Rock albums")}>
+                                                {t("Rock")}
+                                            </button>
+                                            <button className="dropdown-item" onClick={() => applyFilter("Pop albums")}>
+                                                {t("Pop")}
+                                            </button>
+                                            <button className="dropdown-item" onClick={() => applyFilter("J-Pop albums")}>
+                                                {t("J-Pop")}
+                                            </button>
+                                            {/* Add more genre options as needed */}
+                                        </div>
+                                    )}
                                 </div>
                             )}
                         </div>
@@ -148,12 +234,12 @@ export default function SearchResults() {
                                         <a href={item.link}>
                                             <img
                                                 src={item.image}
-                                                alt={item.name}
+                                                alt={item.album}
                                                 className="product-image rounded"
                                             />
                                             <div className="Name-price d-flex flex-row justify-content-between">
                                                 <div className="d-flex flex-column">
-                                                    <div className="product-name mt-2">{item.name} - {item.author}</div>
+                                                    <div className="product-name mt-2">{item.album} - {item.author}</div>
                                                     <div className="product-price">{item.price}</div>
                                                 </div>
                                                 <div className="add-button">
