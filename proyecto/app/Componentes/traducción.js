@@ -55,7 +55,8 @@ const translations = {
       clearCart: 'Clear Cart',
       checkout: 'Checkout',
       checkoutSuccess: 'Purchase successful!',
-      logout: "Log Out"
+      logout: "Log Out",
+      AddToCart: "Add to Cart"
       
     },
     es: {
@@ -112,7 +113,8 @@ const translations = {
       clearCart: 'Vaciar Carrito',
       checkout: 'Finalizar Compra',
       checkoutSuccess: 'Compra realizada con éxito!',
-      logout: "Cerrar Sesión"
+      logout: "Cerrar Sesión",
+      AddToCart: "Agregar al Carrito"
     },
     // Puedes agregar más idiomas aquí
   };
