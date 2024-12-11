@@ -6,6 +6,7 @@ import { LanguageContext } from "./Componentes/languageContext";
 import translations from "./Componentes/traducción";
 import { CartContext } from "./carrito/CartContext";
 import { AuthContext } from "./Componentes/authContext";
+import ChatGPT from "./Componentes/ChatGPT";
 
 export default function HomePage() {
   const { language } = useContext(LanguageContext);
@@ -123,6 +124,13 @@ export default function HomePage() {
                 <p>{t("NoResultsFound")}</p>
               )}
             </div>
+          </div>
+        </section>
+        {/* Integración del Bot de ChatGPT */}
+        <section className="chatbot-section py-5">
+          <div className="container2">
+            <h3 className="Promos">ChatBot GPT-4</h3>
+            <ChatGPT />
           </div>
         </section>
       </main>
