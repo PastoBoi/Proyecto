@@ -6,6 +6,10 @@ export async function POST(req) {
   try {
     const { username, email, password, confirmPassword } = await req.json();
 
+    // Log de las contraseñas para verificar qué datos están llegando
+    console.log('Received password:', password);
+    console.log('Received confirmPassword:', confirmPassword);
+
     // Validar que las contraseñas coincidan
     if (password !== confirmPassword) {
       return new Response('Passwords do not match', { status: 400 });

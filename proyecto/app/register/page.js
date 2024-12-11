@@ -17,16 +17,13 @@ export default function RegisterPage() {
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    if (password !== confirmPassword) {
-      alert(t("passwordMismatch"));
-      return;
-    }
+
     const response = await fetch("/api/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ username, email, password }),
+      body: JSON.stringify({ username, email, password, confirmPassword }), // Asegúrate de incluir confirmPassword
     });
 
     if (response.ok) {
@@ -34,6 +31,8 @@ export default function RegisterPage() {
       router.push(`/login?lang=${language}`); // Redirigir manteniendo el idioma
     } else if (response.status === 409) {
       alert(t("userExists"));
+    } else if (response.status === 400) {
+      alert(t("passwordMismatch")); // O cualquier otro mensaje de error
     } else {
       alert(t("registerError"));
     }
